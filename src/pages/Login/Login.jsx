@@ -11,8 +11,8 @@ const Login = () => {
   const [loginData, setLoginData] = useState({ username: "", password: "" });
 
   const inputChangeHandler = (event) => {
-    setLoginData((data) => ({
-      ...data,
+    setLoginData((prevData) => ({
+      ...prevData,
       [event.target.name]: event.target.value,
     }));
   };

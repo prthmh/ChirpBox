@@ -17,21 +17,19 @@ const Signup = () => {
   const navigate = useNavigate();
 
   const inputChangeHandler = (event) => {
-    setSignUpData((data) => ({
-      ...data,
+    setSignUpData((prevData) => ({
+      ...prevData,
       [event.target.name]: event.target.value,
     }));
   };
 
   const signUphandler = (event) => {
     event.preventDefault();
-    const { password, confirmpassword, acceptTermsCond } = signUpData;
+    const { password, confirmpassword } = signUpData;
     if (password.length < 6) {
       toast.error("Your password should have more than 6 characters");
     } else if (password !== confirmpassword) {
       toast.error("Your password should match");
-    } else if (!acceptTermsCond) {
-      toast.error("Please accept terms and conditions");
     } else {
       userSignUpFunc(signUpData);
     }
