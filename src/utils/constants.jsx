@@ -1,0 +1,5 @@
+export const ACTIONS = {
+  SET_USERS: "SET_USERS",
+  SET_POSTS: "SET_POSTS",
+  SET_POSTS_ON_FEED: "SET_POSTS_ON_FEED",
+};
