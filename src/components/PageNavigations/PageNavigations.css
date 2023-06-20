@@ -1,0 +1,28 @@
+.nav_section {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-items: center;
+  /* margin-top: 2rem; */
+  justify-content: space-between;
+  height: 94vh;
+  /* width: 20%; */
+  /* border-right: 1px solid var(--text-color-dark); */
+}
+
+.page_routes {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  /* margin-top: 2rem; */
+}
+
+.nav_element {
+  text-decoration: none;
+  color: var(--text-color-dark);
+  font-size: 1.2rem;
+  margin: 1rem 0;
+  border-radius: 0.6rem;
+  padding: 0.6rem;
+}

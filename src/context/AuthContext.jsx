@@ -2,6 +2,7 @@ import { useState } from "react";
 import { createContext, useContext } from "react";
 import { loginService, signUpService } from "../services/AuthServices";
 import { useLocation, useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 export const AuthContext = createContext();
 export const AuthProvider = ({ children }) => {
@@ -81,6 +82,7 @@ export const AuthProvider = ({ children }) => {
     setUser(null);
     navigate("/");
     //add logout toast
+    toast.success("Loggedout Successfully!")
   };
 
   return (

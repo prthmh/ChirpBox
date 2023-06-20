@@ -58,10 +58,16 @@ export const DataProvider = ({ children }) => {
     if (user) {
       getUsersFunc();
       getPostsFunc();
+    }
+  }, [user]);
+
+  useEffect(() => {
+    if (allPosts) {
       getPostsOnFeed();
     }
     // eslint-disable-next-line
-  }, [user]);
+  }, [allPosts]);
+
   return (
     <DataContext.Provider value={{ dataState, dataDispatch, getUsersFunc }}>
       {children}
