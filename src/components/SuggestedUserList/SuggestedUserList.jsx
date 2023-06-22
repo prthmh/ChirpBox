@@ -7,10 +7,11 @@ const SuggestedUserList = () => {
     dataState: { allUsers },
   } = useData();
   const { user } = useAuth();
+  // eslint-disable-next-line
   const suggestedUsers = allUsers?.filter(
     ({ username }) => username !== user.username
   );
-  console.log("sugges", suggestedUsers);
+  // console.log("sugges", suggestedUsers);
   return <div>SuggestedUserList</div>;
 };
 

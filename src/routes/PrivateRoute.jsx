@@ -5,7 +5,7 @@ import { Navigate, useLocation } from "react-router-dom";
 const PrivateRoute = ({ children }) => {
   const { token } = useAuth();
   const location = useLocation();
-  console.log("p",token)
+  // console.log("p",token)
   return token ? (
     children
   ) : (

@@ -1,4 +1,4 @@
-// import { v4 as uuid } from "uuid";
+import { v4 as uuid } from "uuid";
 import { formatDate } from "../utils/authUtils";
 
 /**
@@ -8,7 +8,7 @@ import { formatDate } from "../utils/authUtils";
 
 export const posts = [
   {
-    _id: 1,
+    _id: uuid(),
     content: "Learing React is fun.",
     postPic:
       "https://images.pexels.com/photos/11035471/pexels-photo-11035471.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
@@ -22,7 +22,7 @@ export const posts = [
     updatedAt: formatDate(),
   },
   {
-    _id: 2,
+    _id: uuid(),
     content: "Today is a good day.",
     likes: {
       likeCount: 0,
@@ -34,7 +34,7 @@ export const posts = [
     updatedAt: formatDate(),
   },
   {
-    _id: 3,
+    _id: uuid(),
     content: "Preoccupied with a single leaf, you won't see the tree",
     likes: {
       likeCount: 0,
@@ -46,7 +46,7 @@ export const posts = [
     updatedAt: formatDate(),
   },
   {
-    _id: 4,
+    _id: uuid(),
     content: "Difficulties strengthen the mind, as labour does the body.",
     likes: {
       likeCount: 0,
@@ -58,7 +58,7 @@ export const posts = [
     updatedAt: formatDate(),
   },
   {
-    _id: 5,
+    _id: uuid(),
     content: "We suffer more often in imaginaiton than in reality.",
     likes: {
       likeCount: 0,
@@ -70,7 +70,7 @@ export const posts = [
     updatedAt: formatDate(),
   },
   {
-    _id: 6,
+    _id: uuid(),
     content:
       "Worrying dosen't take away tomorrows troubles, it takes away todays peace.",
     likes: {

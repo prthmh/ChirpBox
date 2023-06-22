@@ -1,4 +1,4 @@
-// import { v4 as uuid } from "uuid";
+import { v4 as uuid } from "uuid";
 import { formatDate } from "../utils/authUtils";
 /**
  * User Database can be added here.
@@ -7,7 +7,7 @@ import { formatDate } from "../utils/authUtils";
 
 export const users = [
   {
-    _id: 1,
+    _id: uuid(),
     firstName: "Prathmesh",
     lastName: "Umberkar",
     username: "prxthmxsh",
@@ -15,9 +15,10 @@ export const users = [
     createdAt: formatDate(),
     updatedAt: formatDate(),
     profilePic: "https://picsum.photos/id/474/200/200",
+    bookmarks: [],
   },
   {
-    _id: 2,
+    _id: uuid(),
     firstName: "Aayush",
     lastName: "Khatri",
     username: "aayushK",
@@ -25,9 +26,10 @@ export const users = [
     createdAt: formatDate(),
     updatedAt: formatDate(),
     profilePic: "https://picsum.photos/id/250/200/200",
+    bookmarks: [],
   },
   {
-    _id: 3,
+    _id: uuid(),
     firstName: "Jane",
     lastName: "Smith",
     username: "janesmith",
@@ -35,9 +37,10 @@ export const users = [
     createdAt: formatDate(),
     updatedAt: formatDate(),
     profilePic: "https://picsum.photos/id/331/200/200",
+    bookmarks: [],
   },
   {
-    _id: 4,
+    _id: uuid(),
     firstName: "Rahul",
     lastName: "Kapoor",
     username: "rahulK",
@@ -45,9 +48,10 @@ export const users = [
     createdAt: formatDate(),
     updatedAt: formatDate(),
     profilePic: "https://picsum.photos/id/338/200/200",
+    bookmarks: [],
   },
   {
-    _id: 5,
+    _id: uuid(),
     firstName: "Jay",
     lastName: "Shetty",
     username: "jaySht",
@@ -55,5 +59,6 @@ export const users = [
     createdAt: formatDate(),
     updatedAt: formatDate(),
     profilePic: "https://picsum.photos/id/342/200/200",
+    bookmarks: [],
   },
 ];

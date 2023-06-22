@@ -1,7 +1,6 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import { AiFillHome } from "react-icons/ai";
-import { AiFillHeart } from "react-icons/ai";
 import { MdExplore } from "react-icons/md";
 import { MdBookmark } from "react-icons/md";
 import "./PageNavigations.css";
@@ -24,16 +23,13 @@ const PageNavigations = () => {
           <MdBookmark />
           <span>Bookmarks</span>
         </NavLink>
-        <NavLink to="/likes" className="nav_element">
-          <AiFillHeart />
-          <span>Likes</span>
-        </NavLink>
+        
         <p
           onClick={logOutFunc}
           style={{ cursor: "pointer" }}
           className="nav_element"
         >
-          <i class="fa-solid fa-right-from-bracket"></i>
+          <i className="fa-solid fa-right-from-bracket"></i>
           Logout
         </p>
       </div>

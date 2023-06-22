@@ -4,6 +4,7 @@
   align-items: center;
   /* height: 80vh; */
   margin: 0;
+  margin-top: 2rem;
 }
 .login_content {
   /* text-align: center; */
@@ -48,8 +49,8 @@
   color: var(--text-color-light);
   background-image: linear-gradient(
     135deg,
-    rgb(35, 143, 237) 0%,
-    rgb(28, 96, 177) 100%
+    rgb(63, 88, 182) 0%,
+    rgb(49, 63, 119) 100%
   );
   align-self: center;
 }
@@ -65,25 +66,25 @@
   border-radius: 0.4rem;
   width: fit-content;
   align-self: center;
-  color: rgb(26, 117, 213);
-  border-color: rgb(26, 117, 213);
+  color: #384995;
+  border-color: #384995;
   background: transparent;
 }
 
 .guest_btn:hover {
   /* opacity: 0.9; */
-  background-color: rgb(26, 117, 213);
+  background-color: #384995;
   color: var(--text-color-light);
 }
 
-.new_acc_btn{
-    color: var(--text-color-dark);
-    font-weight: bolder;
-    cursor: pointer;
+.new_acc_btn {
+  color: var(--text-color-dark);
+  font-weight: bolder;
+  cursor: pointer;
 }
 .new_acc_btn::after {
-    content: " >";
-  }
-  .new_acc_btn:hover{
-    text-decoration: underline;
-  }
+  content: " >";
+}
+.new_acc_btn:hover {
+  text-decoration: underline;
+}

@@ -9,7 +9,7 @@ import Login from "../pages/Login/Login";
 import Signup from "../pages/Signup/Signup";
 import Profile from "../pages/Profile/Profile";
 import Bookmark from "../pages/Bookmark/Bookmark";
-import LikedPosts from "../pages/LikedPosts/LikedPosts";
+import PageTemplate from "../pages/PageTemplate/PageTemplate";
 
 const AppRoutes = () => {
   return (
@@ -32,15 +32,9 @@ const AppRoutes = () => {
           path="/bookmarks"
           element={
             <PrivateRoute>
-              <Bookmark />
-            </PrivateRoute>
-          }
-        />
-        <Route
-          path="/likes"
-          element={
-            <PrivateRoute>
-              <LikedPosts />
+              <PageTemplate>
+                <Bookmark />
+              </PageTemplate>
             </PrivateRoute>
           }
         />
@@ -56,7 +50,9 @@ const AppRoutes = () => {
           path="/profile"
           element={
             <PrivateRoute>
-              <Profile />
+              <PageTemplate>
+                <Profile />
+              </PageTemplate>
             </PrivateRoute>
           }
         />

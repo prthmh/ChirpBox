@@ -1,14 +1,21 @@
 import React from "react";
-import { useData } from "../../context/DataContext";
 import PageNavigations from "../../components/PageNavigations/PageNavigations";
 import "./Feed.css";
 import PostsSection from "../../components/PostsSection/PostsSection";
 import SuggestedUserList from "../../components/SuggestedUserList/SuggestedUserList";
+import { usePost } from "../../context/PostContext";
+import { useAuth } from "../../context/AuthContext";
 
 const Feed = () => {
+  const { user } = useAuth();
   const {
-    dataState: { userFeedPosts },
-  } = useData();
+    postState: { allPosts },
+  } = usePost();
+
+  const postsOnFeed = allPosts?.filter(
+    ({ username }) =>
+      username === user.username || user.following.includes(username)
+  );
 
   return (
     <div className="feed_page">
@@ -16,9 +23,16 @@ const Feed = () => {
         <PageNavigations />
       </div>
       <div className="feed_posts">
-        {userFeedPosts?.map((post) => (
-          <PostsSection post={post} />
-        ))}
+        {postsOnFeed.length > 0 ? (
+          postsOnFeed?.map((post) => (
+            <PostsSection post={post} key={post._id} />
+          ))
+        ) : (
+          <h4 style={{ padding: "0.8rem", color: "var(--text-color-dark)" }}>
+            To see posts in feed section you need to follow someone or make a
+            post.
+          </h4>
+        )}
       </div>
       <div className="suggested_users">
         <SuggestedUserList />
