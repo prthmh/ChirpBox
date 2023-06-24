@@ -2,7 +2,6 @@ import { createContext, useContext, useReducer } from "react";
 import { DataReducer } from "../reducer/DataReducer";
 import {
   addToBookmarksService,
-  getBookmarksService,
   getUsersService,
   removeFromBookmarksService,
 } from "../services/DataServices";
@@ -13,7 +12,7 @@ import { toast } from "react-toastify";
 
 export const DataContext = createContext();
 export const DataProvider = ({ children }) => {
-  const { user, token } = useAuth();
+  const { user} = useAuth();
   const [dataState, dataDispatch] = useReducer(DataReducer, {
     allUsers: [],
     bookmarks: [],
@@ -36,19 +35,7 @@ export const DataProvider = ({ children }) => {
     }
   };
 
-  const getBookmarksFunc = async () => {
-    try {
-      const {
-        status,
-        data: { bookmarks },
-      } = await getBookmarksService(token);
-      if (status === 200) {
-        dataDispatch({ type: ACTIONS.SET_BOOKMARKS, payload: bookmarks });
-      }
-    } catch (error) {
-      console.error("Error in get bookmarks func", error);
-    }
-  };
+
 
   const addToBookMarksFunc = async (postId, token) => {
     try {
@@ -91,9 +78,9 @@ export const DataProvider = ({ children }) => {
   };
 
   useEffect(() => {
-    getUsersFunc();
     if (user) {
-      getBookmarksFunc();
+      getUsersFunc();
+      // getBookmarksFunc();
     }
     // eslint-disable-next-line
   }, [user]);

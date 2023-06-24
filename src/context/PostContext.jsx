@@ -6,6 +6,7 @@ import {
   getPostsService,
   disLikeHandlerService,
   likeHandlerService,
+  createNewPostService,
 } from "../services/PostServices";
 import { ACTIONS } from "../utils/constants";
 import { useAuth } from "./AuthContext";
@@ -14,12 +15,12 @@ import { toast } from "react-toastify";
 export const PostContext = createContext();
 
 export const PostProvider = ({ children }) => {
-  const { user } = useAuth();
+  const { user, token } = useAuth();
 
   const initialState = {
     allPosts: [],
     userFeedPosts: [],
-    postDetails: { textContent: "" },
+    postDetails: { content: "" },
     filter: "latest",
   };
 
@@ -85,6 +86,22 @@ export const PostProvider = ({ children }) => {
     return Boolean(isPresent);
   };
 
+  console.log("before create", postState.allPosts);
+  const createNewPostFunc = async ({ content }) => {
+    try {
+      const {
+        status,
+        data: { posts },
+      } = await createNewPostService(content, token);
+      if (status === 201) {
+        postDispatch({ type: ACTIONS.CREATE_NEW_POST, payload: posts });
+        console.log("create new post", posts);
+      }
+    } catch (error) {
+      console.error("Error occured while creating post", error);
+    }
+  };
+
   useEffect(() => {
     if (user) {
       getPostsFunc();
@@ -106,6 +123,7 @@ export const PostProvider = ({ children }) => {
         likePostFunc,
         disLikePostFunc,
         isPostAlreadyLiked,
+        createNewPostFunc,
       }}
     >
       {children}

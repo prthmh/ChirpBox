@@ -5,6 +5,7 @@ import PostsSection from "../../components/PostsSection/PostsSection";
 import SuggestedUserList from "../../components/SuggestedUserList/SuggestedUserList";
 import { usePost } from "../../context/PostContext";
 import { useAuth } from "../../context/AuthContext";
+import NewPost from "../../components/NewPost/NewPost";
 
 const Feed = () => {
   const { user } = useAuth();
@@ -23,6 +24,7 @@ const Feed = () => {
         <PageNavigations />
       </div>
       <div className="feed_posts">
+        <NewPost />
         {postsOnFeed.length > 0 ? (
           postsOnFeed?.map((post) => (
             <PostsSection post={post} key={post._id} />
