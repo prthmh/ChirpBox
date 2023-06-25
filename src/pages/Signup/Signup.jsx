@@ -6,6 +6,8 @@ import { toast } from "react-toastify";
 
 const Signup = () => {
   const [signUpData, setSignUpData] = useState({
+    firstName: "",
+    lastName: "",
     fullname: "",
     username: "",
     email: "",
@@ -38,15 +40,27 @@ const Signup = () => {
   return (
     <div className="login_page">
       <div className="login_content">
-        <h2 style={{margin: "0"}}>Sign up</h2>
+        <h2 style={{ margin: "0" }}>Sign up</h2>
         <form className="login_form" onSubmit={signUphandler}>
           <label className="login_label">
-            Full Name
+            First Name
             <input
               type="text"
-              name="fullname"
+              name="firstName"
               placeholder="Enter your name"
-              value={signUpData.fullname}
+              value={signUpData.firstName}
+              onChange={inputChangeHandler}
+              required
+              className="login_input"
+            />
+          </label>
+          <label className="login_label">
+            Last Name
+            <input
+              type="text"
+              name="lastName"
+              placeholder="Enter your name"
+              value={signUpData.lastName}
               onChange={inputChangeHandler}
               required
               className="login_input"
@@ -114,8 +128,12 @@ const Signup = () => {
             />
             I accept the Terms and Conditions
           </label>
-          <button type="submit" className="login_btn">Create new Account</button>
-          <div onClick={() => navigate("/login")} className="new_acc_btn">Already have an account</div>
+          <button type="submit" className="login_btn">
+            Create new Account
+          </button>
+          <div onClick={() => navigate("/login")} className="new_acc_btn">
+            Already have an account
+          </div>
         </form>
       </div>
     </div>
