@@ -13,15 +13,15 @@ const PageNavigations = () => {
     <div className="nav_section">
       <div className="page_routes">
         <NavLink to="/feed" className="nav_element" style={isNavActive}>
-          <i class="fa-solid fa-house"></i>
+          <i className="fa-solid fa-house"></i>
           <span className="nav_name" >Home</span>
         </NavLink>
         <NavLink to="/explore" className="nav_element" style={isNavActive}>
-          <i class="fa-solid fa-compass"></i>
+          <i className="fa-solid fa-compass"></i>
           <span className="nav_name" >Explore</span>
         </NavLink>
         <NavLink to="/bookmarks" className="nav_element" style={isNavActive}>
-          <i class="fa-solid fa-bookmark"></i>
+          <i className="fa-solid fa-bookmark"></i>
           <span className="nav_name" >Bookmarks</span>
         </NavLink>
 

@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import "./PostsSection.css";
 import { useData } from "../../context/DataContext";
 import { useAuth } from "../../context/AuthContext";
 import { usePost } from "../../context/PostContext";
+import EditPostModal from "../EditPostModal/EditPostModal";
 
 const PostsSection = ({ post }) => {
   const { token, user } = useAuth();
@@ -16,12 +17,11 @@ const PostsSection = ({ post }) => {
   const { likePostFunc, disLikePostFunc, isPostAlreadyLiked, deletePostFunc } =
     usePost();
 
+  const [showEditModal, setShowEditModal] = useState(false);
+
   const postOfUser = allUsers?.find(
     ({ username }) => username === post.username
   );
-  // console.log("post section", user);
-  // console.log("post section t", token);
-  // console.log("post section",user.bookmarks)
 
   return (
     <div className="post_card">
@@ -31,10 +31,22 @@ const PostsSection = ({ post }) => {
         alt="user profile"
       />
       <div className="post_content">
-        <h4 style={{ margin: "0", display: "inline-block" }}>
-          {postOfUser.firstName} {postOfUser.lastName}
-        </h4>{" "}
-        <span style={{ color: "#71717a" }}>@{postOfUser.username}</span>
+        <div className="post_header">
+          <div className="header_content">
+            <h4 style={{ margin: "0", display: "inline-block" }}>
+              {postOfUser.firstName} {postOfUser.lastName}
+            </h4>{" "}
+            <span style={{ color: "#71717a" }}>@{postOfUser.username}</span>
+          </div>
+          <div className="edit_btn call_to_action_btns">
+            {post.username === user.username && (
+              <i
+                className="fa-solid fa-pen-to-square"
+                onClick={() => setShowEditModal(!showEditModal)}
+              ></i>
+            )}
+          </div>
+        </div>
         <p>{post.content}</p>
         {post?.postPic && <img src={post?.postPic} alt="post pic" />}
         <div className="call_to_action_btns">
@@ -77,6 +89,11 @@ const PostsSection = ({ post }) => {
           )}
         </div>
       </div>
+      {showEditModal && (
+        <div className="edit_modal">
+          <EditPostModal setShowEditModal={setShowEditModal} post={post}/>
+        </div>
+      )}
     </div>
   );
 };

@@ -8,6 +8,7 @@ import {
   likeHandlerService,
   createNewPostService,
   deletePostService,
+  editPostService,
 } from "../services/PostServices";
 import { ACTIONS } from "../utils/constants";
 import { useAuth } from "./AuthContext";
@@ -83,11 +84,9 @@ export const PostProvider = ({ children }) => {
     const isPresent = post?.likes?.likedBy.find(
       (postLiker) => postLiker.username === user.username
     );
-    // console.log("is present", isPresent);
     return Boolean(isPresent);
   };
 
-  console.log("before create", postState.allPosts);
   const createNewPostFunc = async ({ content }) => {
     try {
       const {
@@ -96,7 +95,6 @@ export const PostProvider = ({ children }) => {
       } = await createNewPostService(content, token);
       if (status === 201) {
         postDispatch({ type: ACTIONS.CREATE_NEW_POST, payload: posts });
-        console.log("create new post", posts);
       }
     } catch (error) {
       console.error("Error occured while creating post", error);
@@ -119,6 +117,19 @@ export const PostProvider = ({ children }) => {
     }
   };
 
+  const editPostFunc = async (postId, content) => {
+    try {
+      const {
+        status,
+        data: { posts },
+      } = await editPostService(postId, content, token);
+      if (status === 201) {
+        postDispatch({ type: ACTIONS.EDIT_POST, payload: posts });
+      }
+    } catch (error) {
+      console.error("Error in edit post", error);
+    }
+  };
 
   useEffect(() => {
     if (user) {
@@ -143,6 +154,7 @@ export const PostProvider = ({ children }) => {
         isPostAlreadyLiked,
         createNewPostFunc,
         deletePostFunc,
+        editPostFunc,
       }}
     >
       {children}
