@@ -11,7 +11,9 @@ export const PostReducer = (postState, { type, payload }) => {
     case ACTIONS.DISLIKE_POST:
       return { ...postState, allPosts: payload };
     case ACTIONS.CREATE_NEW_POST:
-      return {...postState, allPosts: payload}
+      return { ...postState, allPosts: payload };
+    case ACTIONS.DELETE_POST:
+      return { ...postState, allPosts: payload };
     default:
       return postState;
   }

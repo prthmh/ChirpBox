@@ -1,0 +1,32 @@
+.new_post {
+  display: grid;
+  grid-template-columns: 0.1fr 1fr;
+  /* height: 30%; */
+  border-bottom: 1px solid var(--text-color-dark2);
+  padding: 1rem;
+}
+.post_area {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  border: none;
+  resize: none;
+  outline: none;
+  background-color: var(--bg2-color);
+  font-family: inherit;
+  font-size: inherit;
+  color: black;
+  width: 90%;
+  height: 40%;
+}
+.post_area::placeholder{
+color: var(--text-color-dark2);
+}
+/* .input_area {
+  width: 100%;
+} */
+.post_img {
+  border-radius: 50%;
+  width: 60%;
+  padding: 1rem;
+}

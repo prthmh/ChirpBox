@@ -7,6 +7,7 @@ import {
   disLikeHandlerService,
   likeHandlerService,
   createNewPostService,
+  deletePostService,
 } from "../services/PostServices";
 import { ACTIONS } from "../utils/constants";
 import { useAuth } from "./AuthContext";
@@ -102,6 +103,23 @@ export const PostProvider = ({ children }) => {
     }
   };
 
+  const deletePostFunc = async (postId) => {
+    console.log(token, postId);
+    try {
+      const {
+        status,
+        data: { posts },
+      } = await deletePostService(postId, token);
+      if (status === 201) {
+        postDispatch({ type: ACTIONS.DELETE_POST, payload: posts });
+        toast.success("Deleted a post");
+      }
+    } catch (error) {
+      console.error("Error in dlete post function", error);
+    }
+  };
+
+
   useEffect(() => {
     if (user) {
       getPostsFunc();
@@ -124,6 +142,7 @@ export const PostProvider = ({ children }) => {
         disLikePostFunc,
         isPostAlreadyLiked,
         createNewPostFunc,
+        deletePostFunc,
       }}
     >
       {children}

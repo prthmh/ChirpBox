@@ -2,7 +2,9 @@
 
 :root{
   --main-bg-color: #cadaf3;
+  --bg2-color: #86AEE4;
   --text-color-dark: #222949;
+  --text-color-dark2: #323D6C;
   --text-color-light: #dbf2fe
 }
 body {

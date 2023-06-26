@@ -13,14 +13,15 @@ const PostsSection = ({ post }) => {
     isPostAlreadyBookmarked,
   } = useData();
 
-  const { likePostFunc, disLikePostFunc, isPostAlreadyLiked } = usePost();
+  const { likePostFunc, disLikePostFunc, isPostAlreadyLiked, deletePostFunc } =
+    usePost();
 
   const postOfUser = allUsers?.find(
     ({ username }) => username === post.username
   );
   // console.log("post section", user);
   // console.log("post section t", token);
-    // console.log("post section",user.bookmarks)
+  // console.log("post section",user.bookmarks)
 
   return (
     <div className="post_card">
@@ -69,6 +70,11 @@ const PostsSection = ({ post }) => {
           <div>
             <i className="fa-sharp fa-solid fa-share-nodes"></i>
           </div>
+          {post.username === user.username && (
+            <div onClick={() => deletePostFunc(post._id)}>
+              <i className="fa-solid fa-trash"></i>
+            </div>
+          )}
         </div>
       </div>
     </div>

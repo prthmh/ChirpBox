@@ -8,8 +8,8 @@
 .explore_posts {
   flex-basis: 60%;
   height: 100vh;
-  border-left: 1px solid var(--text-color-dark);
-  border-right: 1px solid var(--text-color-dark);
+  border-left: 1px solid var(--text-color-dark2);
+  border-right: 1px solid var(--text-color-dark2);
   overflow-y: scroll;
 }
 

@@ -265,7 +265,7 @@ export const deletePostHandler = function (schema, request) {
             "The username you entered is not Registered. Not Found error",
           ],
         }
-      );
+      ); 
     }
     const postId = request.params.postId;
     let post = schema.posts.findBy({ _id: postId }).attrs;

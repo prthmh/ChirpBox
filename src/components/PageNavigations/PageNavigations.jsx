@@ -1,36 +1,37 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import { AiFillHome } from "react-icons/ai";
-import { MdExplore } from "react-icons/md";
-import { MdBookmark } from "react-icons/md";
 import "./PageNavigations.css";
 import { useAuth } from "../../context/AuthContext";
 
 const PageNavigations = () => {
   const { user, logOutFunc } = useAuth();
+  const isNavActive = ({ isActive }) => ({
+    backgroundColor: isActive && "#314077",
+    color: isActive && "#b0caed",
+  });
   return (
     <div className="nav_section">
       <div className="page_routes">
-        <NavLink to="/feed" className="nav_element">
-          <AiFillHome />
-          <span>Home</span>
+        <NavLink to="/feed" className="nav_element" style={isNavActive}>
+          <i class="fa-solid fa-house"></i>
+          <span className="nav_name" >Home</span>
         </NavLink>
-        <NavLink to="/explore" className="nav_element">
-          <MdExplore />
-          <span>Explore</span>
+        <NavLink to="/explore" className="nav_element" style={isNavActive}>
+          <i class="fa-solid fa-compass"></i>
+          <span className="nav_name" >Explore</span>
         </NavLink>
-        <NavLink to="/bookmarks" className="nav_element">
-          <MdBookmark />
-          <span>Bookmarks</span>
+        <NavLink to="/bookmarks" className="nav_element" style={isNavActive}>
+          <i class="fa-solid fa-bookmark"></i>
+          <span className="nav_name" >Bookmarks</span>
         </NavLink>
-        
+
         <p
           onClick={logOutFunc}
           style={{ cursor: "pointer" }}
           className="nav_element"
         >
           <i className="fa-solid fa-right-from-bracket"></i>
-          Logout
+          <span className="nav_name" >Logout</span>
         </p>
       </div>
       <div className="user_in_nav">

@@ -41,3 +41,8 @@ export const createNewPostService = async (content, token) => {
     console.error("Error in create new post service", error);
   }
 };
+
+export const deletePostService = async (postId, token) =>
+  await axios.delete(`/api/posts/${postId}`, {
+    headers: { authorization: token },
+  });

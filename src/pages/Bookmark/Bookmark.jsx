@@ -22,7 +22,7 @@ const Bookmark = () => {
           return <PostsSection key={postId} post={bookmarkedPost} />
         })
       ) : (
-        <h2>No posts in bookmark</h2>
+        <h4 style={{ padding: "0.8rem", color: "var(--text-color-dark)", textAlign: "center" }} >No posts in bookmark</h4>
       )}
     </div>
   );
