@@ -4,11 +4,11 @@ import { useAuth } from "../../context/AuthContext";
 
 const Profile = () => {
   const { user } = useAuth();
-  console.log(user);
+  console.log(user.bannerImg);
 
   return (
     <div>
-      <img src={user.bannerImg} alt="banner pic" className="banner_img" />
+      <img className="banner_img" src={user.bannerImg} alt="banner pic" />
       <div className="profile_header">
         <img src={user.profilePic} alt="user_pic" className="profile_img" />
         <div>

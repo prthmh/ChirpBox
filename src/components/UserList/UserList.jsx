@@ -16,7 +16,7 @@ const UserList = ({ usersInList }) => {
               <p>
                 {user.firstName} {user.lastName}
               </p>
-              <p>{user.username}</p>
+              <p style={{color: "#71717a"}} >@{user.username}</p>
             </div>
           </div>
           <button>Follow</button>
