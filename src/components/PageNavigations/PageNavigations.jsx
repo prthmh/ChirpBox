@@ -24,6 +24,10 @@ const PageNavigations = () => {
           <i className="fa-solid fa-bookmark"></i>
           <span className="nav_name" >Bookmarks</span>
         </NavLink>
+        <NavLink to="/profile" className="nav_element" style={isNavActive}>
+        <i className="fa-solid fa-user"></i>
+          <span className="nav_name" >Profile</span>
+        </NavLink>
 
         <p
           onClick={logOutFunc}

@@ -1,0 +1,28 @@
+.user_item {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  padding: 0.5rem;
+}
+
+.info {
+  display: grid;
+  grid-template-columns: 0.4fr 1fr;
+  gap: 1rem;
+}
+
+.profilpic {
+  border-radius: 50%;
+  width: 3rem;
+  height: 3rem;
+  object-fit: cover;
+}
+
+.user_detail > p {
+  margin: 0;
+}
+
+.user_detail {
+  display: flex;
+  flex-direction: column;
+}

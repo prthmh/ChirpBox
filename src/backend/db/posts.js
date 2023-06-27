@@ -1,5 +1,5 @@
 import { v4 as uuid } from "uuid";
-import { formatDate } from "../utils/authUtils";
+// import { formatDate } from "../utils/authUtils";
 
 /**
  * Posts can be added here.
@@ -18,8 +18,8 @@ export const posts = [
       dislikedBy: [],
     },
     username: "prxthmxsh",
-    createdAt: formatDate(),
-    updatedAt: formatDate(),
+    createdAt: "2023-06-27T17:48:53+05:30",
+    updatedAt: "2023-06-27T17:48:53+05:30",
   },
   {
     _id: uuid(),
@@ -30,8 +30,8 @@ export const posts = [
       dislikedBy: [],
     },
     username: "aayushK",
-    createdAt: formatDate(),
-    updatedAt: formatDate(),
+    createdAt: "2023-05-27T17:48:53+05:30",
+    updatedAt: "2023-05-27T17:48:53+05:30",
   },
   {
     _id: uuid(),
@@ -42,8 +42,8 @@ export const posts = [
       dislikedBy: [],
     },
     username: "janesmith",
-    createdAt: formatDate(),
-    updatedAt: formatDate(),
+    createdAt: "2023-04-27T17:48:53+05:30",
+    updatedAt: "2023-04-27T17:48:53+05:30",
   },
   {
     _id: uuid(),
@@ -54,8 +54,8 @@ export const posts = [
       dislikedBy: [],
     },
     username: "rahulK",
-    createdAt: formatDate(),
-    updatedAt: formatDate(),
+    createdAt: "2023-03-27T17:48:53+05:30",
+    updatedAt: "2023-03-27T17:48:53+05:30",
   },
   {
     _id: uuid(),
@@ -66,8 +66,8 @@ export const posts = [
       dislikedBy: [],
     },
     username: "jaySht",
-    createdAt: formatDate(),
-    updatedAt: formatDate(),
+    createdAt: "2023-02-27T17:48:53+05:30",
+    updatedAt: "2023-02-27T17:48:53+05:30",
   },
   {
     _id: uuid(),
@@ -79,7 +79,7 @@ export const posts = [
       dislikedBy: [],
     },
     username: "jaySht",
-    createdAt: formatDate(),
-    updatedAt: formatDate(),
+    createdAt: "2023-02-27T18:48:53+05:30",
+    updatedAt: "2023-02-27T18:48:53+05:30",
   },
 ];

@@ -1,0 +1,22 @@
+.banner_img {
+  width: 100%;
+  height: 12rem;
+  object-fit: cover;
+}
+.profile_img {
+  border-radius: 50%;
+  width: 15%;
+  position: absolute;
+  right: 39rem;
+  top: -4rem;
+  border: 0.3rem solid var(--main-bg-color);
+}
+.profile_header {
+  display: flex;
+  justify-content: flex-end;
+  position: relative;
+  height: 40%;
+}
+.header_info {
+  padding: 1rem;
+}

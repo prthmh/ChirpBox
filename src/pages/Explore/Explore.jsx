@@ -12,7 +12,7 @@ const Explore = () => {
   // console.log("explore posts", allPosts);
   return (
     <div className="explore_page">
-      <div className="explore_page_nav" style={{ flexBasis: "15%" }}>
+      <div className="explore_page_nav" style={{ flexBasis: "10%" }}>
         <PageNavigations />
       </div>
       <div className="explore_posts">
@@ -20,7 +20,7 @@ const Explore = () => {
           <PostsSection post={post} key={post._id} />
         ))}
       </div>
-      <div className="suggested_users">
+      <div className="suggested_users" style={{ flexBasis: "20%" }}>
         <SuggestedUserList />
       </div>
     </div>

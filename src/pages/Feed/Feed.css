@@ -3,10 +3,10 @@
   flex-wrap: wrap;
   height: 100vh;
   overflow: hidden;
-  margin: auto 10rem;
+  justify-content: space-evenly;
 }
 .feed_posts {
-  flex-basis: 60%;
+  flex-basis: 50%;
   height: 100vh;
   overflow-y: scroll;
   border-left: 1px solid var(--text-color-dark2);

@@ -3,10 +3,10 @@
   flex-wrap: wrap;
   height: 100vh;
   overflow: hidden;
-  margin: auto 10rem;
+  justify-content: space-evenly;
 }
 .page_content {
-  flex-basis: 60%;
+  flex-basis: 50%;
   height: 100vh;
   border-left: 1px solid var(--text-color-dark2);
   border-right: 1px solid var(--text-color-dark2);
@@ -17,5 +17,8 @@
   width: 0; /* Hide the default scrollbar for Chrome, Safari, and Opera */
 }
 .page_nav_section {
-  flex-basis: 15%;
+  flex-basis: 10%;
+}
+.suggest_section {
+  flex-basis: 20%;
 }

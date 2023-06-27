@@ -20,7 +20,7 @@ const Feed = () => {
 
   return (
     <div className="feed_page">
-      <div className="feed_page_nav" style={{ flexBasis: "15%" }}>
+      <div className="feed_page_nav" style={{ flexBasis: "10%" }}>
         <PageNavigations />
       </div>
       <div className="feed_posts">
@@ -36,7 +36,7 @@ const Feed = () => {
           </h4>
         )}
       </div>
-      <div className="suggested_users">
+      <div className="suggested_users" style={{ flexBasis: "20%" }}>
         <SuggestedUserList />
       </div>
     </div>

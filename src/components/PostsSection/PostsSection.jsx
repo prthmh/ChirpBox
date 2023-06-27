@@ -41,6 +41,7 @@ const PostsSection = ({ post }) => {
           <div className="edit_btn call_to_action_btns">
             {post.username === user.username && (
               <i
+                title="Edit"
                 className="fa-solid fa-pen-to-square"
                 onClick={() => setShowEditModal(!showEditModal)}
               ></i>
@@ -58,9 +59,9 @@ const PostsSection = ({ post }) => {
             }
           >
             {isPostAlreadyLiked(post, user) ? (
-              <i className="fa-solid fa-heart"></i>
+              <i className="fa-solid fa-heart" title="Dislike"></i>
             ) : (
-              <i className="fa-regular fa-heart"></i>
+              <i className="fa-regular fa-heart" title="Like"></i>
             )}
           </div>
           <div
@@ -71,9 +72,9 @@ const PostsSection = ({ post }) => {
             }
           >
             {isPostAlreadyBookmarked(post._id, bookmarks) ? (
-              <i className="fa-solid fa-bookmark"></i>
+              <i className="fa-solid fa-bookmark" title="Remove from bookmarks" ></i>
             ) : (
-              <i className="fa-regular fa-bookmark"></i>
+              <i className="fa-regular fa-bookmark" title="Bookmark" ></i>
             )}
           </div>
           <div>
@@ -84,14 +85,14 @@ const PostsSection = ({ post }) => {
           </div>
           {post.username === user.username && (
             <div onClick={() => deletePostFunc(post._id)}>
-              <i className="fa-solid fa-trash"></i>
+              <i className="fa-solid fa-trash" title="Delete" ></i>
             </div>
           )}
         </div>
       </div>
       {showEditModal && (
         <div className="edit_modal">
-          <EditPostModal setShowEditModal={setShowEditModal} post={post}/>
+          <EditPostModal setShowEditModal={setShowEditModal} post={post} />
         </div>
       )}
     </div>
