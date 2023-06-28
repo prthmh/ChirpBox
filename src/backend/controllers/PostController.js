@@ -46,7 +46,7 @@ export const getAllUserPostsHandler = function (schema, request) {
   try {
     const posts = schema.posts.where({ username })?.models;
     return new Response(200, {}, { posts });
-  } catch (error) {
+  } catch (error) { 
     return new Response(
       500,
       {},

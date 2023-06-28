@@ -7,7 +7,7 @@ import { v4 as uuid } from "uuid";
 
 export const users = [
   {
-    _id: uuid(),
+    _id: 1,
     firstName: "Prathmesh",
     lastName: "Umberkar",
     username: "prxthmxsh",
@@ -16,6 +16,7 @@ export const users = [
     updatedAt: "2023-06-27T17:48:53+05:30",
     profilePic: "https://picsum.photos/id/474/200/200",
     bookmarks: [],
+    bio_link: "https://prathmeshumberkar.netlify.app/",
     bio: "It never ceases to amaze me: we all love ourselves more than other people, but care more about their opinion than our own. -Marcus Aurelius",
     bannerImg:
       "https://i.pinimg.com/originals/2e/59/a4/2e59a45889aa828e0e0da51691971655.jpg",
@@ -88,7 +89,7 @@ export const users = [
     ],
   },
   {
-    _id: uuid(),
+    _id: 2,
     firstName: "Aayush",
     lastName: "Khatri",
     username: "aayushK",
@@ -101,7 +102,7 @@ export const users = [
       "https://i.pinimg.com/564x/fd/d3/91/fdd39171aac8afb88312d5d78d9e46f4.jpg",
   },
   {
-    _id: uuid(),
+    _id: 3,
     firstName: "Jane",
     lastName: "Smith",
     username: "janesmith",
@@ -114,7 +115,7 @@ export const users = [
       "https://i.pinimg.com/originals/2e/59/a4/2e59a45889aa828e0e0da51691971655.jpg",
   },
   {
-    _id: uuid(),
+    _id: 4,
     firstName: "Rahul",
     lastName: "Kapoor",
     username: "rahulK",
@@ -127,7 +128,7 @@ export const users = [
       "https://i.pinimg.com/1200x/83/3d/43/833d4399648f74f30f9fed8c86edb960.jpg",
   },
   {
-    _id: uuid(),
+    _id: 5,
     firstName: "Jay",
     lastName: "Shetty",
     username: "jaySht",
@@ -140,7 +141,7 @@ export const users = [
       "https://i.pinimg.com/originals/2e/59/a4/2e59a45889aa828e0e0da51691971655.jpg",
   },
   {
-    _id: uuid(),
+    _id: 6,
     firstName: "Raj",
     lastName: "Malhotra",
     username: "RajM",
@@ -154,7 +155,7 @@ export const users = [
       "https://i.pinimg.com/originals/2e/59/a4/2e59a45889aa828e0e0da51691971655.jpg",
   },
   {
-    _id: uuid(),
+    _id: 7,
     firstName: "Deven",
     lastName: "Patel",
     username: "devP",

@@ -18,9 +18,6 @@ export const DataProvider = ({ children }) => {
     bookmarks: [],
   });
 
-  // const { bookmarks } = dataState;
-  // console.log("data context", bookmarks);
-  // console.log("data context user", user.bookmarks)
   const getUsersFunc = async () => {
     try {
       const {
@@ -67,20 +64,14 @@ export const DataProvider = ({ children }) => {
     }
   };
 
-  // const isPostAlreadyBookmarked = (postId) => {
-  //   const bookmarkFind = bookmarks?.find(({ _id }) => _id === postId);
-  //   console.log("is in bookmark", bookmarkFind);
-  //   return Boolean(bookmarkFind);
-  // };
+ 
   const isPostAlreadyBookmarked = (postId, bookmarks) => {
-    // console.log("present in bookmarks",bookmarks.find((bookmark) => bookmark === postId))
     return bookmarks.find((bookmark) => bookmark === postId);
   };
 
   useEffect(() => {
     if (user) {
       getUsersFunc();
-      // getBookmarksFunc();
     }
     // eslint-disable-next-line
   }, [user]);

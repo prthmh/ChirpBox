@@ -6,6 +6,8 @@
 .profile_img {
   border-radius: 50%;
   width: 15%;
+  height: 7rem;
+  object-fit: cover;
   position: absolute;
   right: 39rem;
   top: -4rem;
@@ -19,4 +21,24 @@
 }
 .header_info {
   padding: 1rem;
+}
+.network {
+  display: flex;
+  justify-content: space-evenly;
+  border-bottom: 1px solid var(--text-color-dark2);
+  padding-bottom: 0.5rem;
+}
+.network > p {
+  margin: 0;
+  font-size: large;
+  color: var(--text-color-dark2);
+}
+.network_modal {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  inset: 0;
+  z-index: 999;
+  background-color: rgba(0, 0, 0, 0.5);
 }

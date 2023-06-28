@@ -1,5 +1,6 @@
 import React from "react";
 import "./UserList.css";
+import { NavLink } from "react-router-dom";
 
 const UserList = ({ usersInList }) => {
   console.log("u list", usersInList);
@@ -7,23 +8,28 @@ const UserList = ({ usersInList }) => {
     <div>
       {usersInList.map((user) => (
         <div key={user._id} className="user_item">
-          <div className="info">
-            <div>
-              <img src={user.profilePic} alt="user_pic" className="profilpic" />
-            </div>
+          <NavLink
+            to={`/profile/${user._id}`}
+            style={{ textDecoration: "none", color: "inherit" }}
+          >
+            <div className="info">
+              <div>
+                <img
+                  src={user.profilePic}
+                  alt="user_pic"
+                  className="profilpic"
+                />
+              </div>
 
-            <div className="user_detail">
-              <p>
-                {user.firstName} {user.lastName}
-              </p>
-              <p style={{color: "#71717a"}} >@{user.username}</p>
+              <div className="user_detail">
+                <p>
+                  {user.firstName} {user.lastName}
+                </p>
+                <p style={{ color: "#71717a" }}>@{user.username}</p>
+              </div>
             </div>
-          </div>
+          </NavLink>
           <button>Follow</button>
-          {/* <p>{user.username}</p>
-          <p>
-              {user.firstName} {user.lastName}
-            </p> */}
         </div>
       ))}
     </div>

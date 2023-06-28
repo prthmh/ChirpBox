@@ -1,28 +1,140 @@
 import React from "react";
 import "./Profile.css";
-import { useAuth } from "../../context/AuthContext";
+import { usePost } from "../../context/PostContext";
+import { useState } from "react";
+import { useParams } from "react-router-dom";
+import { useEffect } from "react";
+import { getSingleUser } from "../../utils/getSingleUser";
+import Loader from "../../components/Loader/Loader";
+import NetworkModal from "../../components/NetworkModal/NetworkModal";
+import { getPostsOfUser } from "../../utils/getPostsOfUser";
+import PostsSection from "../../components/PostsSection/PostsSection";
 
 const Profile = () => {
-  const { user } = useAuth();
-  console.log(user.bannerImg);
+  const { userId } = useParams();
+  const {
+    postState: { allPosts },
+  } = usePost();
+  const [profileOfUser, setProfileOfUser] = useState({});
+  const [postsOnProfile, setPostsOnProfile] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
+  const [showNetworkModal, setShowNetworkModal] = useState({
+    show: false,
+    type: "",
+    users: [],
+  });
+
+  useEffect(() => {
+    setIsLoading(true);
+    getSingleUser(setProfileOfUser, userId, setIsLoading);
+  }, [userId]);
+
+  useEffect(() => {
+    getPostsOfUser(setPostsOnProfile, profileOfUser.username);
+  }, [profileOfUser.username, allPosts]);
+
+  console.log("post of user", postsOnProfile);
 
   return (
-    <div>
-      <img className="banner_img" src={user.bannerImg} alt="banner pic" />
-      <div className="profile_header">
-        <img src={user.profilePic} alt="user_pic" className="profile_img" />
+    <>
+      {isLoading ? (
+        <Loader />
+      ) : (
         <div>
-          <button>Edit</button>
+          <img
+            className="banner_img"
+            src={profileOfUser.bannerImg}
+            alt="banner pic"
+          />
+          <div className="profile_header">
+            <img
+              src={profileOfUser.profilePic}
+              alt="user_pic"
+              className="profile_img"
+            />
+            <div>
+              <button>Edit</button>
+            </div>
+          </div>
+          <div className="header_info">
+            <h2 style={{ marginBottom: "0" }}>
+              {profileOfUser.firstName} {profileOfUser.lastName}
+            </h2>
+            <span style={{ color: "#71717a" }}>@{profileOfUser.username}</span>
+            <p>{profileOfUser.bio}</p>
+            {profileOfUser.bio_link && (
+              <>
+                <i className="fa-solid fa-link"></i>{" "}
+                <a
+                  href={profileOfUser.bio_link}
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  {profileOfUser.bio_link}
+                </a>
+              </>
+            )}
+          </div>
+          <div className="network">
+            <p
+              onClick={() =>
+                setShowNetworkModal({
+                  ...showNetworkModal,
+                  show: true,
+                  type: "Following",
+                  users: profileOfUser?.following,
+                })
+              }
+            >
+              {profileOfUser?.following?.length}{" "}
+              <span style={{ fontWeight: "bolder", cursor: "pointer" }}>
+                {" "}
+                Following
+              </span>
+            </p>
+            <p
+              onClick={() =>
+                setShowNetworkModal({
+                  ...showNetworkModal,
+                  show: true,
+                  type: "Followers",
+                  users: profileOfUser?.followers,
+                })
+              }
+            >
+              {profileOfUser?.followers?.length}{" "}
+              <span style={{ fontWeight: "bolder", cursor: "pointer" }}>
+                {" "}
+                Followers
+              </span>
+            </p>
+          </div>
+          {postsOnProfile?.length > 0 ? (
+            postsOnProfile?.map((post) => (
+              <PostsSection key={post._id} post={post} />
+            ))
+          ) : (
+            <h4
+              style={{
+                padding: "0.8rem",
+                color: "var(--text-color-dark)",
+                textAlign: "center",
+              }}
+            >
+              You have not created any posts
+            </h4>
+          )}
         </div>
-      </div>
-      <div className="header_info">
-        <h2 style={{ marginBottom: "0" }}>
-          {user.firstName} {user.lastName}
-        </h2>
-        <span style={{ color: "#71717a" }}>@{user.username}</span>
-        <p>{user.bio}</p>
-      </div>
-    </div>
+      )}
+      {showNetworkModal.show && (
+        <div className="network_modal">
+          <NetworkModal
+            showNetworkModal={showNetworkModal}
+            setShowNetworkModal={setShowNetworkModal}
+          />
+        </div>
+      )}
+    </>
   );
 };
 

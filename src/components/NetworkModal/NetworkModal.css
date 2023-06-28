@@ -1,0 +1,13 @@
+.network_section {
+  width: 20rem;
+  padding: 1rem;
+  margin: 1rem;
+  max-height: 90vh;
+  overflow-y: auto;
+  background-color: var(--bg3-color);
+  border-radius: 1.5rem;
+}
+.network_header {
+  display: flex;
+  justify-content: space-between;
+}
