@@ -14,7 +14,7 @@ export const AuthProvider = ({ children }) => {
   const navigate = useNavigate();
   const location = useLocation();
 
-  const userLoginFunc = async ({username, password}) => {
+  const userLoginFunc = async ({ username, password }) => {
     setIsLoading(true);
     try {
       const res = await loginService(username, password);
@@ -23,7 +23,10 @@ export const AuthProvider = ({ children }) => {
         data: { encodedToken, foundUser },
       } = res;
       if (status === 200) {
-        localStorage.setItem("loginToken", JSON.stringify({ token: encodedToken }));
+        localStorage.setItem(
+          "loginToken",
+          JSON.stringify({ token: encodedToken })
+        );
         setToken(encodedToken);
         localStorage.setItem("userData", JSON.stringify({ user: foundUser }));
         setUser(foundUser);
@@ -56,7 +59,10 @@ export const AuthProvider = ({ children }) => {
         data: { createdUser, encodedToken },
       } = res;
       if (status === 201) {
-        localStorage.setItem("loginToken", JSON.stringify({ token: encodedToken }));
+        localStorage.setItem(
+          "loginToken",
+          JSON.stringify({ token: encodedToken })
+        );
         setToken(encodedToken);
         localStorage.setItem("userData", JSON.stringify({ user: createdUser }));
         setUser(createdUser);
@@ -82,7 +88,7 @@ export const AuthProvider = ({ children }) => {
     setUser(null);
     navigate("/");
     //add logout toast
-    toast.success("Loggedout Successfully!")
+    toast.success("Loggedout Successfully!");
   };
 
   return (
@@ -90,6 +96,7 @@ export const AuthProvider = ({ children }) => {
       value={{
         token,
         user,
+        setUser,
         isLoading,
         userLoginFunc,
         userSignUpFunc,

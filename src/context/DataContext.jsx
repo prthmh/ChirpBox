@@ -2,6 +2,7 @@ import { createContext, useContext, useReducer } from "react";
 import { DataReducer } from "../reducer/DataReducer";
 import {
   addToBookmarksService,
+  editProfileService,
   getUsersService,
   removeFromBookmarksService,
 } from "../services/DataServices";
@@ -12,7 +13,7 @@ import { toast } from "react-toastify";
 
 export const DataContext = createContext();
 export const DataProvider = ({ children }) => {
-  const { user} = useAuth();
+  const { setUser, token } = useAuth();
   const [dataState, dataDispatch] = useReducer(DataReducer, {
     allUsers: [],
     bookmarks: [],
@@ -31,8 +32,6 @@ export const DataProvider = ({ children }) => {
       console.error("Error in getting users", error);
     }
   };
-
-
 
   const addToBookMarksFunc = async (postId, token) => {
     try {
@@ -64,17 +63,31 @@ export const DataProvider = ({ children }) => {
     }
   };
 
- 
   const isPostAlreadyBookmarked = (postId, bookmarks) => {
     return bookmarks.find((bookmark) => bookmark === postId);
   };
 
-  useEffect(() => {
-    if (user) {
-      getUsersFunc();
+  const editProfileFunc = async (editData) => {
+    try {
+      const {
+        status,
+        data: { user },
+      } = await editProfileService(editData, token);
+      if (status === 201) {
+        dataDispatch({ type: ACTIONS.EDIT_PROFLE, payload: user });
+        setUser(user);
+        toast.success("Profile edited successfully");
+      }
+    } catch (error) {
+      console.error("Error in edit profile", error);
     }
+  };
+
+  useEffect(() => {
+    getUsersFunc();
+
     // eslint-disable-next-line
-  }, [user]);
+  }, []);
 
   return (
     <DataContext.Provider
@@ -84,6 +97,7 @@ export const DataProvider = ({ children }) => {
         addToBookMarksFunc,
         removeFromBookmarksFunc,
         isPostAlreadyBookmarked,
+        editProfileFunc,
       }}
     >
       {children}

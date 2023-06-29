@@ -9,12 +9,18 @@ const NetworkModal = ({ showNetworkModal, setShowNetworkModal }) => {
   return (
     <div className="network_section">
       <div className="network_header">
-        <h3 style={{marginTop: "0"}} >{showNetworkModal.type}</h3>
-        <div className="cancel_btn" onClick={handleModalClose} style={{cursor: "pointer"}} >
+        <h3 style={{ marginTop: "0" }}>{showNetworkModal.type}</h3>
+        <div
+          className="cancel_btn"
+          onClick={handleModalClose}
+          style={{ cursor: "pointer" }}
+        >
           <i className="fa-solid fa-circle-xmark"></i>
         </div>
       </div>
-      <UserList usersInList={showNetworkModal.users} />
+      <div style={{ pointerEvents: "none" }}>
+        <UserList usersInList={showNetworkModal.users} />
+      </div>
     </div>
   );
 };

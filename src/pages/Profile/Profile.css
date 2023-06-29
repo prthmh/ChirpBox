@@ -33,7 +33,7 @@
   font-size: large;
   color: var(--text-color-dark2);
 }
-.network_modal {
+.modal {
   display: flex;
   align-items: center;
   justify-content: center;

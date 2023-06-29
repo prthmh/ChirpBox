@@ -52,12 +52,10 @@ export const PostProvider = ({ children }) => {
   // };
 
   const likePostFunc = async (postId, token) => {
-    console.log(postId, token);
     try {
       const res = await likeHandlerService(postId, token);
       if (res?.status === 201) {
         postDispatch({ type: ACTIONS.LIKE_POST, payload: res?.data?.posts });
-        console.log("liked a post");
         toast.success("Liked a post");
       }
     } catch (error) {

@@ -9,12 +9,20 @@ import Loader from "../../components/Loader/Loader";
 import NetworkModal from "../../components/NetworkModal/NetworkModal";
 import { getPostsOfUser } from "../../utils/getPostsOfUser";
 import PostsSection from "../../components/PostsSection/PostsSection";
+import EditProfileModal from "../../components/EditProfileModal/EditProfileModal";
+import { useData } from "../../context/DataContext";
+import { useAuth } from "../../context/AuthContext";
 
 const Profile = () => {
   const { userId } = useParams();
   const {
     postState: { allPosts },
   } = usePost();
+  const {
+    dataState: { allUsers },
+  } = useData();
+  console.log(allUsers);
+  const { user } = useAuth();
   const [profileOfUser, setProfileOfUser] = useState({});
   const [postsOnProfile, setPostsOnProfile] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
@@ -24,16 +32,16 @@ const Profile = () => {
     users: [],
   });
 
+  const [showProfileEditModal, setShowProfileEditModal] = useState(false);
+
   useEffect(() => {
     setIsLoading(true);
     getSingleUser(setProfileOfUser, userId, setIsLoading);
-  }, [userId]);
+  }, [userId, user]);
 
   useEffect(() => {
     getPostsOfUser(setPostsOnProfile, profileOfUser.username);
   }, [profileOfUser.username, allPosts]);
-
-  console.log("post of user", postsOnProfile);
 
   return (
     <>
@@ -52,7 +60,7 @@ const Profile = () => {
               alt="user_pic"
               className="profile_img"
             />
-            <div>
+            <div onClick={() => setShowProfileEditModal(!showProfileEditModal)}>
               <button>Edit</button>
             </div>
           </div>
@@ -127,10 +135,18 @@ const Profile = () => {
         </div>
       )}
       {showNetworkModal.show && (
-        <div className="network_modal">
+        <div className="modal">
           <NetworkModal
             showNetworkModal={showNetworkModal}
             setShowNetworkModal={setShowNetworkModal}
+          />
+        </div>
+      )}
+      {showProfileEditModal && (
+        <div className="modal">
+          <EditProfileModal
+            setShowProfileEditModal={setShowProfileEditModal}
+            editUser={profileOfUser}
           />
         </div>
       )}
