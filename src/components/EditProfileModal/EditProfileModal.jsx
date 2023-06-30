@@ -2,10 +2,12 @@ import React from "react";
 import "./EditProfileModal.css";
 import { useState } from "react";
 import { useData } from "../../context/DataContext";
+import AvatarModal from "../AvatarModal/AvatarModal";
 
 const EditProfileModal = ({ setShowProfileEditModal, editUser }) => {
   const [editData, setEditData] = useState(editUser);
   const { editProfileFunc } = useData();
+  const [showAvatarModal, setShowAvatarModal] = useState(false);
 
   const inputChangeHandler = (event) => {
     setEditData((prevData) => ({
@@ -34,6 +36,9 @@ const EditProfileModal = ({ setShowProfileEditModal, editUser }) => {
       </div>
       <div className="edit_pic">
         <img src={editUser.profilePic} alt="user_pic" className="edit_img" />
+        <button onClick={() => setShowAvatarModal(!showAvatarModal)}>
+          Select Avatar
+        </button>
       </div>
 
       <form className="edit_form" onSubmit={editProfileHandler}>
@@ -80,13 +85,6 @@ const EditProfileModal = ({ setShowProfileEditModal, editUser }) => {
 
         <label className="edit_label">
           Bio
-          {/* <textarea
-            name="username"
-            value={editData.bio}
-            onChange={inputChangeHandler}
-            
-            className="edit_input edit_textarea"
-          ></textarea> */}
           <input
             type="text"
             name="bio"
@@ -97,6 +95,11 @@ const EditProfileModal = ({ setShowProfileEditModal, editUser }) => {
         </label>
         <button type="submit">Save</button>
       </form>
+      {showAvatarModal && (
+        <div className="avatar_modal">
+          <AvatarModal setShowAvatarModal={setShowAvatarModal} />
+        </div>
+      )}
     </div>
   );
 };

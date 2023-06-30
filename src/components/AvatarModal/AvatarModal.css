@@ -1,0 +1,30 @@
+.avatar {
+  /* width: 15rem; */
+  padding: 1rem;
+  margin: 1rem;
+  max-height: 90vh;
+  overflow-y: auto;
+  background-color: var(--bg3-color);
+  border-radius: 1.5rem;
+}
+
+.avatar_header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.avatar_ary {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.avatar_pic {
+  display: inline-block;
+  margin: 0 auto;
+  border-radius: 50%;
+  width: 60%;
+  height: 95%;
+  /* padding: 0.1rem; */
+}
