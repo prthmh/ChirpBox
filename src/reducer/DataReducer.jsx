@@ -17,6 +17,14 @@ export const DataReducer = (dataState, { type, payload }) => {
           user._id === payload._id ? payload : user
         ),
       };
+    case ACTIONS.SET_USER_FOLLOWS:
+      return {
+        ...dataState,
+        allUsers: dataState.allUsers.map((user) => {
+          const updatedUser = payload.find((item) => item._id === user._id);
+          return updatedUser ? updatedUser : user;
+        }),
+      };
     default:
       return dataState;
   }

@@ -3,8 +3,10 @@ import { DataReducer } from "../reducer/DataReducer";
 import {
   addToBookmarksService,
   editProfileService,
+  followUserService,
   getUsersService,
   removeFromBookmarksService,
+  unFollowUserService,
 } from "../services/DataServices";
 import { useEffect } from "react";
 import { ACTIONS } from "../utils/constants";
@@ -13,7 +15,7 @@ import { toast } from "react-toastify";
 
 export const DataContext = createContext();
 export const DataProvider = ({ children }) => {
-  const { setUser, token } = useAuth();
+  const { user, setUser, token } = useAuth();
   const [dataState, dataDispatch] = useReducer(DataReducer, {
     allUsers: [],
     bookmarks: [],
@@ -83,10 +85,52 @@ export const DataProvider = ({ children }) => {
     }
   };
 
+  const followUserFunc = async (followUserId) => {
+    try {
+      const {
+        status,
+        data: { user, followUser },
+      } = await followUserService(followUserId, token);
+      if (status === 200) {
+        dataDispatch({
+          type: ACTIONS.SET_USER_FOLLOWS,
+          payload: [user, followUser],
+        });
+        setUser(user);
+        toast.success(`You followed ${followUser?.username}`);
+      }
+    } catch (error) {
+      console.error("Error in follow func", error);
+    }
+  };
+
+  const unfollowUserFunc = async (followUserId) => {
+    try {
+      const {
+        status,
+        data: { user, followUser },
+      } = await unFollowUserService(followUserId, token);
+      if (status === 200) {
+        dataDispatch({
+          type: ACTIONS.SET_USER_FOLLOWS,
+          payload: [user, followUser],
+        });
+        setUser(user);
+        toast.success(`You Unfollowed ${followUser?.username}`);
+      }
+    } catch (error) {
+      console.error("Error in unfollow func", error);
+    }
+  };
+
+  const isAlreadyFollowed = (userId) => {
+    const isPresent = user?.following?.find(({ _id }) => _id === userId);
+   
+    return Boolean(isPresent);
+  };
+
   useEffect(() => {
     getUsersFunc();
-
-    // eslint-disable-next-line
   }, []);
 
   return (
@@ -98,6 +142,9 @@ export const DataProvider = ({ children }) => {
         removeFromBookmarksFunc,
         isPostAlreadyBookmarked,
         editProfileFunc,
+        followUserFunc,
+        unfollowUserFunc,
+        isAlreadyFollowed,
       }}
     >
       {children}

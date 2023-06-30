@@ -1,9 +1,10 @@
 import React from "react";
 import "./UserList.css";
 import { NavLink } from "react-router-dom";
+import { useData } from "../../context/DataContext";
 
-const UserList = ({ usersInList }) => {
-  console.log("u list", usersInList);
+const UserList = ({ usersInList, setShowNetworkModal }) => {
+  const { followUserFunc, unfollowUserFunc, isAlreadyFollowed } = useData();
   return (
     <div>
       {usersInList.map((user) => (
@@ -11,6 +12,13 @@ const UserList = ({ usersInList }) => {
           <NavLink
             to={`/profile/${user._id}`}
             style={{ textDecoration: "none", color: "inherit" }}
+            onClick={(prevState) =>
+              setShowNetworkModal({
+                ...prevState,
+                show: false,
+                type: "",
+              })
+            }
           >
             <div className="info">
               <div>
@@ -29,7 +37,11 @@ const UserList = ({ usersInList }) => {
               </div>
             </div>
           </NavLink>
-          <button>Follow</button>
+          {isAlreadyFollowed(user._id) ? (
+            <button onClick={() => unfollowUserFunc(user._id)}>Unfollow</button>
+          ) : (
+            <button onClick={() => followUserFunc(user._id)}>Follow</button>
+          )}
         </div>
       ))}
     </div>

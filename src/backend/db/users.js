@@ -1,4 +1,4 @@
-import { v4 as uuid } from "uuid";
+// import { v4 as uuid } from "uuid";
 // import { formatDate } from "../utils/authUtils";
 /**
  * User Database can be added here.
@@ -22,7 +22,7 @@ export const users = [
       "https://i.pinimg.com/originals/2e/59/a4/2e59a45889aa828e0e0da51691971655.jpg",
     followers: [
       {
-        _id: uuid(),
+        _id: 2,
         firstName: "Aayush",
         lastName: "Khatri",
         username: "aayushK",
@@ -32,7 +32,7 @@ export const users = [
         profilePic: "https://picsum.photos/id/250/200/200",
       },
       {
-        _id: uuid(),
+        _id: 4,
         firstName: "Rahul",
         lastName: "Kapoor",
         username: "rahulK",
@@ -42,7 +42,7 @@ export const users = [
         profilePic: "https://picsum.photos/id/338/200/200",
       },
       {
-        _id: uuid(),
+        _id: 7,
         firstName: "Deven",
         lastName: "Patel",
         username: "devP",
@@ -53,7 +53,7 @@ export const users = [
           "https://cdn.pixabay.com/photo/2023/06/18/00/38/beetle-8070966_1280.jpg",
       },
       {
-        _id: uuid(),
+        _id: 6,
         firstName: "Raj",
         lastName: "Malhotra",
         username: "RajM",
@@ -66,7 +66,7 @@ export const users = [
     ],
     following: [
       {
-        _id: uuid(),
+        _id: 6,
         firstName: "Raj",
         lastName: "Malhotra",
         username: "RajM",
@@ -77,7 +77,7 @@ export const users = [
           "https://akm-img-a-in.tosshub.com/indiatoday/images/story/202010/srk-ddlj-raj_1200x768.png?size=690:388",
       },
       {
-        _id: uuid(),
+        _id: 5,
         firstName: "Jay",
         lastName: "Shetty",
         username: "jaySht",

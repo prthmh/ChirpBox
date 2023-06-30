@@ -18,8 +18,13 @@ const NetworkModal = ({ showNetworkModal, setShowNetworkModal }) => {
           <i className="fa-solid fa-circle-xmark"></i>
         </div>
       </div>
-      <div style={{ pointerEvents: "none" }}>
-        <UserList usersInList={showNetworkModal.users} />
+      <div 
+      // style={{ pointerEvents: "none" }}
+      >
+        <UserList
+          usersInList={showNetworkModal.users}
+          setShowNetworkModal={setShowNetworkModal}
+        />
       </div>
     </div>
   );

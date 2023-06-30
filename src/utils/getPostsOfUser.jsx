@@ -6,5 +6,8 @@ export const getPostsOfUser = async (setPostsOnProfile, username) => {
     setPostsOnProfile(res.data.posts);
   } catch (error) {
     console.error("Error in getting user posts", error);
-  }
+  } 
+  // finally {
+  //   setIsLoading(false);
+  // }
 };

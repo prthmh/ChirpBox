@@ -1,6 +1,6 @@
 import React from "react";
 import "./Profile.css";
-import { usePost } from "../../context/PostContext";
+// import { usePost } from "../../context/PostContext";
 import { useState } from "react";
 import { useParams } from "react-router-dom";
 import { useEffect } from "react";
@@ -11,18 +11,18 @@ import { getPostsOfUser } from "../../utils/getPostsOfUser";
 import PostsSection from "../../components/PostsSection/PostsSection";
 import EditProfileModal from "../../components/EditProfileModal/EditProfileModal";
 import { useData } from "../../context/DataContext";
-import { useAuth } from "../../context/AuthContext";
+// import { useAuth } from "../../context/AuthContext";
 
 const Profile = () => {
   const { userId } = useParams();
-  const {
-    postState: { allPosts },
-  } = usePost();
+  // const {
+  //   postState: { allPosts },
+  // } = usePost();
   const {
     dataState: { allUsers },
   } = useData();
-  console.log(allUsers);
-  const { user } = useAuth();
+  // console.log(allUsers);
+  // const { user } = useAuth();
   const [profileOfUser, setProfileOfUser] = useState({});
   const [postsOnProfile, setPostsOnProfile] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
@@ -31,17 +31,24 @@ const Profile = () => {
     type: "",
     users: [],
   });
-
+  
   const [showProfileEditModal, setShowProfileEditModal] = useState(false);
 
   useEffect(() => {
     setIsLoading(true);
-    getSingleUser(setProfileOfUser, userId, setIsLoading);
-  }, [userId, user]);
+    getSingleUser(setProfileOfUser, userId);
+  }, [userId, allUsers]);
 
   useEffect(() => {
-    getPostsOfUser(setPostsOnProfile, profileOfUser.username);
-  }, [profileOfUser.username, allPosts]);
+    getPostsOfUser(setPostsOnProfile, profileOfUser.username, setIsLoading);
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 500);
+
+    return () => {
+      clearTimeout(timer);
+    };
+  }, [profileOfUser, allUsers]);
 
   return (
     <>
@@ -117,6 +124,7 @@ const Profile = () => {
               </span>
             </p>
           </div>
+
           {postsOnProfile?.length > 0 ? (
             postsOnProfile?.map((post) => (
               <PostsSection key={post._id} post={post} />

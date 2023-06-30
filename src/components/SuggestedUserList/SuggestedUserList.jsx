@@ -9,9 +9,12 @@ const SuggestedUserList = () => {
     dataState: { allUsers },
   } = useData();
   const { user } = useAuth();
-  const suggestedUsers = allUsers?.filter(
-    ({ username }) => username !== user.username
-  );
+  const suggestedUsers = allUsers
+    ?.filter(({ username }) => username !== user.username)
+    ?.filter(
+      (item) =>
+        !user?.following?.find(({ username }) => username === item.username)
+    );
   // console.log("sugges", suggestedUsers);
   return (
     <div className="sugges_compo">
