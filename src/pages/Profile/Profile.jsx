@@ -11,6 +11,7 @@ import { getPostsOfUser } from "../../utils/getPostsOfUser";
 import PostsSection from "../../components/PostsSection/PostsSection";
 import EditProfileModal from "../../components/EditProfileModal/EditProfileModal";
 import { useData } from "../../context/DataContext";
+import { useAuth } from "../../context/AuthContext";
 // import { useAuth } from "../../context/AuthContext";
 
 const Profile = () => {
@@ -21,7 +22,8 @@ const Profile = () => {
   const {
     dataState: { allUsers },
   } = useData();
-  // console.log(allUsers);
+  const { user } = useAuth();
+  // console.log("profile",allUsers);
   // const { user } = useAuth();
   const [profileOfUser, setProfileOfUser] = useState({});
   const [postsOnProfile, setPostsOnProfile] = useState([]);
@@ -31,7 +33,7 @@ const Profile = () => {
     type: "",
     users: [],
   });
-  
+
   const [showProfileEditModal, setShowProfileEditModal] = useState(false);
 
   useEffect(() => {
@@ -154,7 +156,7 @@ const Profile = () => {
         <div className="modal">
           <EditProfileModal
             setShowProfileEditModal={setShowProfileEditModal}
-            editUser={profileOfUser}
+            editUser={user}
           />
         </div>
       )}

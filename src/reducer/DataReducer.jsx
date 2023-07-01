@@ -25,6 +25,17 @@ export const DataReducer = (dataState, { type, payload }) => {
           return updatedUser ? updatedUser : user;
         }),
       };
+    case ACTIONS.UPDATE_AVATAR:
+      return {
+        ...dataState,
+        allUsers: dataState.allUsers.map((user) =>{
+          console.log("data reducer",payload)
+         return user._id === payload[0]._id
+            ? { ...user, profilePic: payload[1] }
+            : user
+          }
+        )
+      };
     default:
       return dataState;
   }

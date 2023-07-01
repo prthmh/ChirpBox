@@ -3,9 +3,12 @@ import "./EditProfileModal.css";
 import { useState } from "react";
 import { useData } from "../../context/DataContext";
 import AvatarModal from "../AvatarModal/AvatarModal";
+import { useAuth } from "../../context/AuthContext";
 
 const EditProfileModal = ({ setShowProfileEditModal, editUser }) => {
-  const [editData, setEditData] = useState(editUser);
+  const { user } = useAuth();
+
+  const [editData, setEditData] = useState(user);
   const { editProfileFunc } = useData();
   const [showAvatarModal, setShowAvatarModal] = useState(false);
 
@@ -18,7 +21,8 @@ const EditProfileModal = ({ setShowProfileEditModal, editUser }) => {
 
   const editProfileHandler = (event) => {
     event.preventDefault();
-    editProfileFunc(editData);
+    editProfileFunc({ ...editData, profilePic: user.profilePic });
+    // console.log("edit data modal", editData);
     setShowProfileEditModal(false);
   };
 

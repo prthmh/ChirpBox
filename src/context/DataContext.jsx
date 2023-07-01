@@ -21,6 +21,8 @@ export const DataProvider = ({ children }) => {
     bookmarks: [],
   });
 
+  console.log("data user", user);
+
   const getUsersFunc = async () => {
     try {
       const {
@@ -125,7 +127,7 @@ export const DataProvider = ({ children }) => {
 
   const isAlreadyFollowed = (userId) => {
     const isPresent = user?.following?.find(({ _id }) => _id === userId);
-   
+
     return Boolean(isPresent);
   };
 

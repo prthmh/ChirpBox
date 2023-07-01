@@ -1,0 +1,13 @@
+.new_post_box {
+  width: 30rem;
+  padding: 1rem;
+  margin: 1rem;
+  max-height: 90vh;
+  overflow-y: auto;
+  background-color: #cadaf3;
+  border-radius: 1.5rem;
+}
+.new_post_header {
+  display: flex;
+  justify-content: space-between;
+}

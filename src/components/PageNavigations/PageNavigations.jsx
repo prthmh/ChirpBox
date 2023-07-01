@@ -2,8 +2,11 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import "./PageNavigations.css";
 import { useAuth } from "../../context/AuthContext";
+import { useState } from "react";
+import NewPostModal from "../NewPostModal/NewPostModal";
 
 const PageNavigations = () => {
+  const [showCreatePost, setShowCreatePost] = useState(false);
   const { user, logOutFunc } = useAuth();
   const isNavActive = ({ isActive }) => ({
     backgroundColor: isActive && "#314077",
@@ -24,10 +27,20 @@ const PageNavigations = () => {
           <i className="fa-solid fa-bookmark"></i>
           <span className="nav_name">Bookmarks</span>
         </NavLink>
-        <NavLink to={`/profile/${user._id}`} className="nav_element" style={isNavActive}>
+        <NavLink
+          to={`/profile/${user._id}`}
+          className="nav_element"
+          style={isNavActive}
+        >
           <i className="fa-solid fa-user"></i>
           <span className="nav_name">Profile</span>
         </NavLink>
+        <button
+          className="nav_element"
+          onClick={() => setShowCreatePost(!showCreatePost)}
+        >
+          Create New Post
+        </button>
 
         <p
           onClick={logOutFunc}
@@ -47,13 +60,20 @@ const PageNavigations = () => {
           />
         </div>
         <div>
-          <span style={{ color: "var(--text-color-dark)", fontWeight: "bolder" }}>
+          <span
+            style={{ color: "var(--text-color-dark)", fontWeight: "bolder" }}
+          >
             {user.firstName} {user.lastName}
           </span>
           <br />
           <span style={{ color: "#71717a" }}>@{user.username}</span>
         </div>
       </div>
+      {showCreatePost && (
+        <div className="new_post_modal">
+          <NewPostModal setShowCreatePost={setShowCreatePost} />
+        </div>
+      )}
     </div>
   );
 };

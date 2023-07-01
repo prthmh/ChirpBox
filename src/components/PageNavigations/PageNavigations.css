@@ -51,3 +51,13 @@
   height: 3rem;
   object-fit: cover;
 }
+
+.new_post_modal {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  inset: 0;
+  z-index: 999;
+  background-color: rgba(0, 0, 0, 0.5);
+}

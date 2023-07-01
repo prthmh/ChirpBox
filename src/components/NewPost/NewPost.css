@@ -1,9 +1,17 @@
 .new_post {
-  display: grid;
+  /* display: grid;
   grid-template-columns: 0.1fr 1fr;
-  /* height: 30%; */
+  height: 30%;
   border-bottom: 1px solid var(--text-color-dark2);
-  padding: 1rem;
+  padding: 1rem; */
+  display: flex;
+  flex-direction: row;
+}
+.input_area {
+  flex-basis: 80%;
+}
+.input_form {
+  width: 100%;
 }
 .post_area {
   appearance: none;
@@ -17,16 +25,18 @@
   font-size: inherit;
   /* color: black; */
   width: 90%;
+  /* flex-basis: 100%; */
   height: 40%;
 }
-.post_area::placeholder{
-color: var(--text-color-dark2);
+.post_area::placeholder {
+  color: var(--text-color-dark2);
 }
 /* .input_area {
   width: 100%;
 } */
 .post_img {
+  width: 7%;
+  height: 7%;
   border-radius: 50%;
-  width: 60%;
   padding: 1rem;
 }

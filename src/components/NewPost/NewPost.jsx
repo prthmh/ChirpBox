@@ -5,7 +5,7 @@ import { toast } from "react-toastify";
 import "./NewPost.css";
 import { useAuth } from "../../context/AuthContext";
 
-const NewPost = () => {
+const NewPost = ({ setShowCreatePost }) => {
   const { user } = useAuth();
   const { createNewPostFunc } = usePost();
   const [content, setContent] = useState("");
@@ -16,6 +16,7 @@ const NewPost = () => {
     event.preventDefault();
     createNewPostFunc({ content });
     toast.success("Created new post");
+    setShowCreatePost(false);
     setContent("");
     textAreaRef.current.innerText = "";
   };
@@ -23,9 +24,9 @@ const NewPost = () => {
   return (
     <div className="new_post">
       {/* <div className="user_profile_pic"> */}
-        <img src={user.profilePic} alt="img" className="post_img" />
+      <img src={user.profilePic} alt="img" className="post_img" />
       {/* </div> */}
-      <form onSubmit={newPosthandler}>
+      <form onSubmit={newPosthandler} className="input_form" >
         <div className="input_area">
           <textarea
             ref={textAreaRef}

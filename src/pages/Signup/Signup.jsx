@@ -3,6 +3,7 @@ import { useState } from "react";
 import { useAuth } from "../../context/AuthContext";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
+import { defaultAvatar, defaultBannerImg } from "../../utils/profileAvatars";
 
 const Signup = () => {
   const [signUpData, setSignUpData] = useState({
@@ -14,6 +15,8 @@ const Signup = () => {
     password: "",
     confirmpassword: "",
     acceptTermsCond: false,
+    profilePic: defaultAvatar,
+    bannerImg: defaultBannerImg,
   });
   const { userSignUpFunc } = useAuth();
   const navigate = useNavigate();
@@ -33,6 +36,7 @@ const Signup = () => {
     } else if (password !== confirmpassword) {
       toast.error("Your password should match");
     } else {
+      console.log("signup data",signUpData)
       userSignUpFunc(signUpData);
     }
   };

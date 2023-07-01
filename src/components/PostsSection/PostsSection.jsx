@@ -27,7 +27,7 @@ const PostsSection = ({ post }) => {
     <div className="post_card">
       <img
         src={postOfUser.profilePic}
-        className="user_pic"
+        className="user_pic" 
         alt="user profile"
       />
       <div className="post_content">

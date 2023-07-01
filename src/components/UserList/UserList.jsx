@@ -5,6 +5,15 @@ import { useData } from "../../context/DataContext";
 
 const UserList = ({ usersInList, setShowNetworkModal }) => {
   const { followUserFunc, unfollowUserFunc, isAlreadyFollowed } = useData();
+  const handleProfileClick = () => {
+    if (setShowNetworkModal) {
+      setShowNetworkModal((prevState) => ({
+        ...prevState,
+        show: false,
+        type: "",
+      }));
+    }
+  };
   return (
     <div>
       {usersInList.map((user) => (
@@ -12,13 +21,7 @@ const UserList = ({ usersInList, setShowNetworkModal }) => {
           <NavLink
             to={`/profile/${user._id}`}
             style={{ textDecoration: "none", color: "inherit" }}
-            onClick={(prevState) =>
-              setShowNetworkModal({
-                ...prevState,
-                show: false,
-                type: "",
-              })
-            }
+            onClick={handleProfileClick}
           >
             <div className="info">
               <div>
