@@ -4,6 +4,8 @@ import { useData } from "../../context/DataContext";
 import { useAuth } from "../../context/AuthContext";
 import { usePost } from "../../context/PostContext";
 import EditPostModal from "../EditPostModal/EditPostModal";
+import { defaultAvatar } from "../../utils/profileAvatars";
+import { getDate } from "../../utils/getDate";
 
 const PostsSection = ({ post }) => {
   const { token, user } = useAuth();
@@ -22,12 +24,11 @@ const PostsSection = ({ post }) => {
   const postOfUser = allUsers?.find(
     ({ username }) => username === post.username
   );
-
   return (
     <div className="post_card">
       <img
-        src={postOfUser.profilePic}
-        className="user_pic" 
+        src={postOfUser.profilePic ? postOfUser.profilePic : defaultAvatar}
+        className="user_pic"
         alt="user profile"
       />
       <div className="post_content">
@@ -36,7 +37,9 @@ const PostsSection = ({ post }) => {
             <h4 style={{ margin: "0", display: "inline-block" }}>
               {postOfUser.firstName} {postOfUser.lastName}
             </h4>{" "}
-            <span style={{ color: "#71717a" }}>@{postOfUser.username}</span>
+            <span style={{ color: "#71717a" }}>
+              @{postOfUser.username} · {getDate(postOfUser?.createdAt)}
+            </span>
           </div>
           <div className="edit_btn call_to_action_btns">
             {post.username === user.username && (
@@ -59,9 +62,17 @@ const PostsSection = ({ post }) => {
             }
           >
             {isPostAlreadyLiked(post, user) ? (
-              <i className="fa-solid fa-heart" title="Dislike"></i>
+              <>
+                <i className="fa-solid fa-heart" title="Dislike"></i>
+                <span style={{marginLeft: "0.2rem"}} ></span>
+                {post.likes.likeCount}
+              </>
             ) : (
-              <i className="fa-regular fa-heart" title="Like"></i>
+              <>
+                <i className="fa-regular fa-heart" title="Like"></i>
+                <span style={{marginLeft: "0.2rem"}} ></span>
+                {post.likes.likeCount}
+              </>
             )}
           </div>
           <div
@@ -72,9 +83,12 @@ const PostsSection = ({ post }) => {
             }
           >
             {isPostAlreadyBookmarked(post._id, bookmarks) ? (
-              <i className="fa-solid fa-bookmark" title="Remove from bookmarks" ></i>
+              <i
+                className="fa-solid fa-bookmark"
+                title="Remove from bookmarks"
+              ></i>
             ) : (
-              <i className="fa-regular fa-bookmark" title="Bookmark" ></i>
+              <i className="fa-regular fa-bookmark" title="Bookmark"></i>
             )}
           </div>
           <div>
@@ -85,7 +99,7 @@ const PostsSection = ({ post }) => {
           </div>
           {post.username === user.username && (
             <div onClick={() => deletePostFunc(post._id)}>
-              <i className="fa-solid fa-trash" title="Delete" ></i>
+              <i className="fa-solid fa-trash" title="Delete"></i>
             </div>
           )}
         </div>

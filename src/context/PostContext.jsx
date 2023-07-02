@@ -23,7 +23,7 @@ export const PostProvider = ({ children }) => {
     allPosts: [],
     userFeedPosts: [],
     postDetails: { content: "" },
-    filter: "latest",
+    filter: "Latest",
   };
 
   const [postState, postDispatch] = useReducer(PostReducer, initialState);

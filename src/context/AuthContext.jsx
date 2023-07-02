@@ -32,8 +32,6 @@ export const AuthProvider = ({ children }) => {
         setUser(foundUser);
 
         navigate(location?.state?.from?.pathname || "/feed", { replace: true });
-
-        //add success toast
       }
     } catch (error) {
       console.error(
@@ -68,7 +66,13 @@ export const AuthProvider = ({ children }) => {
         setUser(createdUser);
 
         navigate("/feed", { replace: true });
-        //add success toast
+        toast.success(
+          "Congratulaitons you have created an account on ChirpBox. An default avatar and default banner image has been assigned to you.",
+          {
+            position: "top-center",
+            autoClose: 4000,
+          }
+        );
       }
     } catch (error) {
       console.error(

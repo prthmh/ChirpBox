@@ -16,6 +16,8 @@ export const PostReducer = (postState, { type, payload }) => {
       return { ...postState, allPosts: payload };
     case ACTIONS.EDIT_POST:
       return { ...postState, allPosts: payload };
+    case ACTIONS.FILTER_POST:
+      return { ...postState, filter: payload };
     default:
       return postState;
   }

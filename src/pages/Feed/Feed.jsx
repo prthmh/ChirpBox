@@ -6,17 +6,22 @@ import SuggestedUserList from "../../components/SuggestedUserList/SuggestedUserL
 import { usePost } from "../../context/PostContext";
 import { useAuth } from "../../context/AuthContext";
 import NewPost from "../../components/NewPost/NewPost";
+import FilterTab from "../../components/FilterTab/FilterTab";
+import { filterPosts } from "../../utils/filterPosts";
 
 const Feed = () => {
   const { user } = useAuth();
   const {
-    postState: { allPosts },
+    postState: { allPosts, filter },
   } = usePost();
-
   const postsOnFeed = allPosts?.filter(
-    ({ username }) =>
-      username === user.username || user.following.includes(username)
+    (post) =>
+      post.username === user.username ||
+      user.following.some((item) => item.username === post.username)
   );
+  console.log(postsOnFeed, filter);
+  const filteredPosts = filterPosts(postsOnFeed, filter);
+  // console.log(filteredPosts);
 
   return (
     <div className="feed_page">
@@ -25,8 +30,9 @@ const Feed = () => {
       </div>
       <div className="feed_posts">
         <NewPost />
-        {postsOnFeed.length > 0 ? (
-          postsOnFeed?.map((post) => (
+        <FilterTab />
+        {filteredPosts.length > 0 ? (
+          filteredPosts?.map((post) => (
             <PostsSection post={post} key={post._id} />
           ))
         ) : (

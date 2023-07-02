@@ -12,6 +12,7 @@ import PostsSection from "../../components/PostsSection/PostsSection";
 import EditProfileModal from "../../components/EditProfileModal/EditProfileModal";
 import { useData } from "../../context/DataContext";
 import { useAuth } from "../../context/AuthContext";
+import { defaultAvatar, defaultBannerImg } from "../../utils/profileAvatars";
 // import { useAuth } from "../../context/AuthContext";
 
 const Profile = () => {
@@ -60,12 +61,20 @@ const Profile = () => {
         <div>
           <img
             className="banner_img"
-            src={profileOfUser.bannerImg}
+            src={
+              profileOfUser.bannerImg
+                ? profileOfUser.bannerImg
+                : defaultBannerImg
+            }
             alt="banner pic"
           />
           <div className="profile_header">
             <img
-              src={profileOfUser.profilePic}
+              src={
+                profileOfUser.profilePic
+                  ? profileOfUser.profilePic
+                  : defaultAvatar
+              }
               alt="user_pic"
               className="profile_img"
             />

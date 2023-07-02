@@ -4,6 +4,7 @@ import { useState } from "react";
 import { useData } from "../../context/DataContext";
 import AvatarModal from "../AvatarModal/AvatarModal";
 import { useAuth } from "../../context/AuthContext";
+import { defaultAvatar } from "../../utils/profileAvatars";
 
 const EditProfileModal = ({ setShowProfileEditModal, editUser }) => {
   const { user } = useAuth();
@@ -39,7 +40,11 @@ const EditProfileModal = ({ setShowProfileEditModal, editUser }) => {
         </div>
       </div>
       <div className="edit_pic">
-        <img src={editUser.profilePic} alt="user_pic" className="edit_img" />
+        <img
+          src={editUser.profilePic ? editUser.profilePic : defaultAvatar}
+          alt="user_pic"
+          className="edit_img"
+        />
         <button onClick={() => setShowAvatarModal(!showAvatarModal)}>
           Select Avatar
         </button>

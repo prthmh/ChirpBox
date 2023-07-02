@@ -1,0 +1,19 @@
+.filter_tab {
+  padding: 1rem;
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--text-color-dark2);
+  border-top: 1px solid var(--text-color-dark2);
+}
+
+.filter_btn {
+  color: var(--text-color-dark);
+  font-size: 1.1rem;
+  position: relative;
+  cursor: pointer;
+}
+.filter_modal {
+  position: absolute;
+  background-color: var(--bg4-color);
+  right: 1rem;
+}

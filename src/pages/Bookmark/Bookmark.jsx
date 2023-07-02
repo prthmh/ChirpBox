@@ -12,7 +12,6 @@ const Bookmark = () => {
     postState: { allPosts },
   } = usePost();
 
-  console.log("bookmarks", bookmarks);
   return (
     <div>
       {bookmarks?.length > 0 ? (

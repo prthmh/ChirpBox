@@ -4,6 +4,7 @@ import "./PageNavigations.css";
 import { useAuth } from "../../context/AuthContext";
 import { useState } from "react";
 import NewPostModal from "../NewPostModal/NewPostModal";
+import { defaultAvatar } from "../../utils/profileAvatars";
 
 const PageNavigations = () => {
   const [showCreatePost, setShowCreatePost] = useState(false);
@@ -54,7 +55,7 @@ const PageNavigations = () => {
       <div className="user_in_nav">
         <div>
           <img
-            src={user.profilePic}
+            src={user.profilePic ? user.profilePic : defaultAvatar}
             alt="user_pic"
             className="user_pic_in_nav"
           />

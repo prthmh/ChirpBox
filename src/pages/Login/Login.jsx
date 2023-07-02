@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useAuth } from "../../context/AuthContext";
 import { useLocation, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
-import "./Login.css"
+import "./Login.css";
 
 const Login = () => {
   const { token, userLoginFunc } = useAuth();
@@ -21,6 +21,7 @@ const Login = () => {
     event.preventDefault();
     const { username, password } = loginData;
     if (event.target.textContent === "Login As Guest") {
+      setLoginData({ username: "prxthmxsh", password: "prat@123" });
       userLoginFunc({ username: "prxthmxsh", password: "prat@123" });
     } else {
       if (!username || !password) {
@@ -42,7 +43,7 @@ const Login = () => {
   return (
     <div className="login_page">
       <div className="login_content">
-        <h2 style={{margin: "0"}} >Login</h2>
+        <h2 style={{ margin: "0" }}>Login</h2>
         <form className="login_form">
           <label className="login_label">
             Username

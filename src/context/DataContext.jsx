@@ -21,7 +21,6 @@ export const DataProvider = ({ children }) => {
     bookmarks: [],
   });
 
-  console.log("data user", user);
 
   const getUsersFunc = async () => {
     try {
