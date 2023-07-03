@@ -54,11 +54,11 @@
 
 .new_post_modal {
   display: flex;
-  align-items: center;
+  /* align-items: center; */
   justify-content: center;
   position: fixed;
   inset: 0;
-  z-index: 999;
+  z-index: 10;
   background-color: rgba(0, 0, 0, 0.5);
 }
 
