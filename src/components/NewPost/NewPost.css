@@ -6,6 +6,8 @@
   padding: 1rem; */
   display: flex;
   flex-direction: row;
+  margin-bottom: 0.6rem;
+  padding: 0.5rem;
 }
 .input_area {
   flex-basis: 80%;
@@ -24,7 +26,7 @@
   font-family: inherit;
   font-size: inherit;
   /* color: black; */
-  width: 90%;
+  width: 92%;
   /* flex-basis: 100%; */
   height: 40%;
 }
@@ -39,4 +41,40 @@
   height: 7%;
   border-radius: 50%;
   padding: 1rem;
+}
+
+.btn {
+  border: none;
+  margin: 0;
+  border-radius: 0.5rem;
+  padding: 0.4rem;
+  background: none;
+  font: inherit;
+  cursor: pointer;
+  background-color: var(--text-color-dark3);
+  color: var(--text-color-light2);
+}
+
+.btn:hover {
+  opacity: 0.9;
+}
+.post_call_to_action_btns {
+  display: flex;
+  justify-content: flex-end;
+  margin-right: 0.5rem;
+  gap: 0.5rem;
+  position: relative;
+}
+
+.emoji_btn {
+  color: var(--text-color-dark3);
+  font-size: 1.6rem;
+  cursor: pointer;
+}
+
+.emoji_modal {
+  position: absolute;
+  z-index: 999;
+  right: 0rem;
+  padding: 0.4rem;
 }

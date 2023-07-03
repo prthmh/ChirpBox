@@ -13,18 +13,15 @@ const getDate = (createdDate) => {
           year: "numeric",
           month: "short",
         });
+      } else {
+        return hr > 1 ? `${hr} hrs ago` : `${hr} hr ago`;
       }
-      // else {
-      //   return hr > 1 ? `${hr} hrs ago` : `${hr} hr ago`;
-      // }
+    } else {
+      return min > 1 ? `${min} mins ago` : `${min} min ago`;
     }
-    //   else {
-    //     return min > 1 ? `${min} mins ago` : `${min} min ago`;
-    //   }
+  } else {
+    return sec > 1 ? `${sec} secs ago` : `${sec} sec ago`;
   }
-  // else {
-  //   return sec > 1 ? `${sec} secs ago` : `${sec} sec ago`;
-  // }
 };
 
 export { getDate };

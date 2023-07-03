@@ -7,7 +7,9 @@
   --bg4-color: #476ac9;
   --text-color-dark: #222949;
   --text-color-dark2: #323d6c;
+  --text-color-dark3: #314077;
   --text-color-light: #dbf2fe;
+  --text-color-light2: #b0caed;
 }
 body {
   background-color: var(--main-bg-color);

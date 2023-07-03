@@ -61,3 +61,20 @@
   z-index: 999;
   background-color: rgba(0, 0, 0, 0.5);
 }
+
+.create_post {
+  border: none;
+  margin: 1rem 0;
+  border-radius: 0.6rem;
+  padding: 0.6rem;
+  background: none;
+  font: inherit;
+  cursor: pointer;
+  background-color: var(--text-color-dark3);
+  color: var(--text-color-light2);
+}
+
+.create_post:hover {
+  background-color: var(--bg2-color);
+  color: var(--text-color-dark);
+}

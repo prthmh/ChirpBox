@@ -41,9 +41,9 @@ const UserList = ({ usersInList, setShowNetworkModal }) => {
             </div>
           </NavLink>
           {isAlreadyFollowed(user._id) ? (
-            <button onClick={() => unfollowUserFunc(user._id)}>Unfollow</button>
+            <button onClick={() => unfollowUserFunc(user._id)} className="btn unfollow" >Unfollow</button>
           ) : (
-            <button onClick={() => followUserFunc(user._id)}>Follow</button>
+            <button onClick={() => followUserFunc(user._id)} className="btn follow">Follow</button>
           )}
         </div>
       ))}

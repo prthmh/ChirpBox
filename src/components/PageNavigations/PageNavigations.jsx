@@ -37,7 +37,7 @@ const PageNavigations = () => {
           <span className="nav_name">Profile</span>
         </NavLink>
         <button
-          className="nav_element"
+          className="create_post"
           onClick={() => setShowCreatePost(!showCreatePost)}
         >
           Create New Post

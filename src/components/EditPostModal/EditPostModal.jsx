@@ -14,15 +14,24 @@ const EditPostModal = ({ setShowEditModal, post }) => {
 
   return (
     <div className="edit_post">
+      <div className="edit_header">
+        <h3 style={{ margin: "0" }}>Edit post</h3>
+        <div
+          className="cancel_btn"
+          onClick={() => setShowEditModal(false)}
+          style={{ cursor: "pointer" }}
+        >
+          <i className="fa-solid fa-circle-xmark"></i>
+        </div>
+      </div>
       <form onSubmit={editPostHandler}>
         <textarea
-          className="edit_input"
+          className="edit_post_input"
           value={input}
           onChange={(event) => setInput(event.target.value)}
         ></textarea>
-        <button type="submit">Save</button>
+        <button type="submit" className="btn">Save</button>
       </form>
-      <button onClick={() => setShowEditModal(false)}>Cancel</button>
     </div>
   );
 };

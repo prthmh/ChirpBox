@@ -79,7 +79,9 @@ const Profile = () => {
               className="profile_img"
             />
             <div onClick={() => setShowProfileEditModal(!showProfileEditModal)}>
-              <button>Edit</button>
+              <button className="btn edit_profile_btn">
+                <i className="fa-solid fa-pen-to-square"></i> Edit Profile
+              </button>
             </div>
           </div>
           <div className="header_info">

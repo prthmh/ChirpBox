@@ -21,6 +21,7 @@
 }
 .header_info {
   padding: 1rem;
+  padding-top: 0rem;
 }
 .network {
   display: flex;
@@ -41,4 +42,8 @@
   inset: 0;
   z-index: 999;
   background-color: rgba(0, 0, 0, 0.5);
+}
+.edit_profile_btn {
+  margin-right: 0.6rem;
+  margin-top: 0.4rem;
 }

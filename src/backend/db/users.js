@@ -1,5 +1,5 @@
 // import { v4 as uuid } from "uuid";
-// import { formatDate } from "../utils/authUtils";
+import { formatDate } from "../utils/authUtils";
 /**
  * User Database can be added here.
  * You can add default users of your wish with different attributes
@@ -12,8 +12,8 @@ export const users = [
     lastName: "Umberkar",
     username: "prxthmxsh",
     password: "prat@123",
-    createdAt: "2023-06-27T17:48:53+05:30",
-    updatedAt: "2023-06-27T17:48:53+05:30",
+    createdAt: formatDate(),
+    updatedAt: formatDate(),
     profilePic: "https://picsum.photos/id/474/200/200",
     avatarPic: "",
     bookmarks: [],
@@ -44,9 +44,9 @@ export const users = [
       },
       {
         _id: 7,
-        firstName: "Deven",
+        firstName: "Jignesh",
         lastName: "Patel",
-        username: "devP",
+        username: "jigP",
         password: "rk@123",
         createdAt: "2023-03-27T17:48:53+05:30",
         updatedAt: "2023-03-27T17:48:53+05:30",
@@ -161,9 +161,9 @@ export const users = [
   },
   {
     _id: 7,
-    firstName: "Deven",
+    firstName: "Jignesh",
     lastName: "Patel",
-    username: "devP",
+    username: "jigP",
     password: "rk@123",
     createdAt: "2023-03-27T17:48:53+05:30",
     updatedAt: "2023-03-27T17:48:53+05:30",

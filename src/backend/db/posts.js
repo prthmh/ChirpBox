@@ -18,8 +18,8 @@ export const posts = [
       dislikedBy: [],
     },
     username: "prxthmxsh",
-    createdAt: formatDate(),
-    updatedAt: formatDate(),
+    createdAt: "2023-06-27T17:48:53+05:30",
+    updatedAt: "2023-06-27T17:48:53+05:30",
   },
   {
     _id: uuid(),
