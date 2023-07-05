@@ -6,7 +6,7 @@ const NewPostModal = ({ setShowCreatePost }) => {
   return (
     <div className="new_post_box">
       <div className="new_post_header">
-        <h2 style={{ margin: "0" }}>Edit Profile</h2>
+        <h2 style={{ margin: "0" }}>Create Post</h2>
         <div
           className="close_btn"
           onClick={() => setShowCreatePost(false)}

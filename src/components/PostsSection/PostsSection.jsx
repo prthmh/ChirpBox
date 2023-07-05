@@ -38,7 +38,7 @@ const PostsSection = ({ post }) => {
               {postOfUser.firstName} {postOfUser.lastName}
             </h4>{" "}
             <span style={{ color: "#71717a" }}>
-              @{postOfUser.username} · {getDate(postOfUser?.createdAt)}
+              @{postOfUser.username} · {getDate(post?.createdAt)}
             </span>
           </div>
           <div className="edit_btn call_to_action_btns">
@@ -52,7 +52,7 @@ const PostsSection = ({ post }) => {
           </div>
         </div>
         <p>{post.content}</p>
-        {post?.postPic && <img src={post?.postPic} alt="post pic" />}
+        {post?.mediaURL && <img src={post?.mediaURL} alt={post?.mediaAlt} />}
         <div className="call_to_action_btns">
           <div
             onClick={() =>
@@ -64,13 +64,13 @@ const PostsSection = ({ post }) => {
             {isPostAlreadyLiked(post, user) ? (
               <>
                 <i className="fa-solid fa-heart" title="Dislike"></i>
-                <span style={{marginLeft: "0.2rem"}} ></span>
+                <span style={{ marginLeft: "0.2rem" }}></span>
                 {post.likes.likeCount}
               </>
             ) : (
               <>
                 <i className="fa-regular fa-heart" title="Like"></i>
-                <span style={{marginLeft: "0.2rem"}} ></span>
+                <span style={{ marginLeft: "0.2rem" }}></span>
                 {post.likes.likeCount}
               </>
             )}

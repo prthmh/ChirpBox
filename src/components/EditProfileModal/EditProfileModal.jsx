@@ -11,6 +11,7 @@ const EditProfileModal = ({ setShowProfileEditModal, editUser }) => {
 
   const [editData, setEditData] = useState(user);
   const { editProfileFunc } = useData();
+  
   const [showAvatarModal, setShowAvatarModal] = useState(false);
 
   const inputChangeHandler = (event) => {
@@ -67,16 +68,6 @@ const EditProfileModal = ({ setShowProfileEditModal, editUser }) => {
             type="text"
             name="lastName"
             value={editData.lastName}
-            onChange={inputChangeHandler}
-            className="edit_input"
-          />
-        </label>
-        <label className="edit_label">
-          Username
-          <input
-            type="text"
-            name="username"
-            value={editData.username}
             onChange={inputChangeHandler}
             className="edit_input"
           />

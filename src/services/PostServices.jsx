@@ -29,11 +29,18 @@ export const disLikeHandlerService = async (postId, token) => {
   }
 };
 
-export const createNewPostService = async (content, token) => {
+export const createNewPostService = async (
+  content,
+  mediaURL,
+  mediaAlt,
+  token
+) => {
   try {
     const res = await axios.post(
       "/api/posts",
-      { postData: { content: content } },
+      {
+        postData: { content: content, mediaURL: mediaURL, mediaAlt: mediaAlt },
+      },
       { headers: { authorization: token } }
     );
     return res;

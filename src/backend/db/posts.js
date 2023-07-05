@@ -10,8 +10,9 @@ export const posts = [
   {
     _id: uuid(),
     content: "Learing React is fun.",
-    postPic:
+    mediaURL:
       "https://images.pexels.com/photos/11035471/pexels-photo-11035471.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+    mediaAlt: "react",
     likes: {
       likeCount: 1,
       likedBy: [],
@@ -24,6 +25,8 @@ export const posts = [
   {
     _id: uuid(),
     content: "Today is a good day.",
+    mediaURL: "",
+    mediaAlt: "",
     likes: {
       likeCount: 7,
       likedBy: [],
@@ -36,8 +39,9 @@ export const posts = [
   {
     _id: uuid(),
     content: "Preoccupied with a single leaf, you won't see the tree",
-    postPic:
+    mediaURL:
       "https://i.pinimg.com/736x/7a/43/62/7a4362dbfb4eccdfb2b38e1d366a7006.jpg",
+    mediaAlt: "manga",
     likes: {
       likeCount: 5,
       likedBy: [],
@@ -50,6 +54,8 @@ export const posts = [
   {
     _id: uuid(),
     content: "Difficulties strengthen the mind, as labour does the body.",
+    mediaURL: "",
+    mediaAlt: "",
     likes: {
       likeCount: 3,
       likedBy: [],
@@ -62,6 +68,8 @@ export const posts = [
   {
     _id: uuid(),
     content: "We suffer more often in imaginaiton than in reality.",
+    mediaURL: "",
+    mediaAlt: "",
     likes: {
       likeCount: 10,
       likedBy: [],
@@ -75,6 +83,8 @@ export const posts = [
     _id: uuid(),
     content:
       "Worrying dosen't take away tomorrows troubles, it takes away todays peace.",
+    mediaURL: "",
+    mediaAlt: "",
     likes: {
       likeCount: 7,
       likedBy: [],

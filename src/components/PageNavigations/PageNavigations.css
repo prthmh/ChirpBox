@@ -70,7 +70,7 @@
   background: none;
   font: inherit;
   cursor: pointer;
-  background-color: var(--text-color-dark3);
+  background-color: var(--text-color-dark);
   color: var(--text-color-light2);
 }
 

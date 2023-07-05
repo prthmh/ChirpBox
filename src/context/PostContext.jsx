@@ -85,12 +85,12 @@ export const PostProvider = ({ children }) => {
     return Boolean(isPresent);
   };
 
-  const createNewPostFunc = async ({ content }) => {
+  const createNewPostFunc = async ({ content, media, mediaAlt }) => {
     try {
       const {
         status,
         data: { posts },
-      } = await createNewPostService(content, token);
+      } = await createNewPostService(content, media, mediaAlt, token);
       if (status === 201) {
         postDispatch({ type: ACTIONS.CREATE_NEW_POST, payload: posts });
       }

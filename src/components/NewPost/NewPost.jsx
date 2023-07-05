@@ -6,12 +6,14 @@ import "./NewPost.css";
 import { useAuth } from "../../context/AuthContext";
 import { defaultAvatar } from "../../utils/profileAvatars";
 import EmojiPicker from "emoji-picker-react";
+import { uploadMedia } from "../../utils/uploadMedia";
 
 const NewPost = ({ setShowCreatePost }) => {
   const { user } = useAuth();
   const { createNewPostFunc } = usePost();
   const [content, setContent] = useState("");
   const [showEmojiModal, setShowEmojiModal] = useState(false);
+  const [media, setMedia] = useState(null);
 
   const textAreaRef = useRef();
 
@@ -22,13 +24,24 @@ const NewPost = ({ setShowCreatePost }) => {
     // setShowEmojiModal(false);
   };
 
-  const newPosthandler = (event) => {
+  const newPosthandler = async (event) => {
     event.preventDefault();
-    createNewPostFunc({ content });
+    if (media) {
+      const res = await uploadMedia(media);
+      console.log(res);
+      createNewPostFunc({
+        content,
+        media: res.url,
+        mediaAlt: res.original_filename,
+      });
+    } else {
+      createNewPostFunc({ content, media: "", mediaAlt: "" });
+    }
     toast.success("Created new post");
     if (setShowCreatePost) {
       setShowCreatePost(false);
     }
+    setMedia(null);
     setShowEmojiModal(false);
     setContent("");
     textAreaRef.current.innerText = "";
@@ -52,6 +65,17 @@ const NewPost = ({ setShowCreatePost }) => {
             placeholder="Share your ideas with the world..."
             className="post_area"
           ></textarea>
+        </div>
+        {media && <img src={URL.createObjectURL(media)} alt="upload_img" />}
+        <div className="upload_image">
+          <label>
+            <input
+              type="file"
+              accept="image/*"
+              onChange={(e) => setMedia(e.target.files[0])}
+            />
+            <i className="fa-solid fa-image"></i>
+          </label>
         </div>
         <div className="post_call_to_action_btns">
           <div>
