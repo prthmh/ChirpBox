@@ -13,7 +13,7 @@ const EditProfileModal = ({ setShowProfileEditModal, editUser }) => {
   const { editProfileFunc } = useData();
 
   const [showAvatarModal, setShowAvatarModal] = useState(false);
-  const [selectedAvatar, setSelectedAvatar] = useState(null);
+  // const [selectedAvatar, setSelectedAvatar] = useState(null);
 
   const inputChangeHandler = (event) => {
     setEditData((prevData) => ({
