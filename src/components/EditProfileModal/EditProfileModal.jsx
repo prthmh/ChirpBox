@@ -11,8 +11,9 @@ const EditProfileModal = ({ setShowProfileEditModal, editUser }) => {
 
   const [editData, setEditData] = useState(user);
   const { editProfileFunc } = useData();
-  
+
   const [showAvatarModal, setShowAvatarModal] = useState(false);
+  const [selectedAvatar, setSelectedAvatar] = useState(null);
 
   const inputChangeHandler = (event) => {
     setEditData((prevData) => ({
@@ -29,7 +30,7 @@ const EditProfileModal = ({ setShowProfileEditModal, editUser }) => {
   };
 
   return (
-    <div className="profile_modal">
+    <div className="profile_modal"> 
       <div className="modal_header">
         <h2 style={{ margin: "0" }}>Edit Profile</h2>
         <div

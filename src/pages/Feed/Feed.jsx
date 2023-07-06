@@ -23,6 +23,15 @@ const Feed = () => {
 
   return (
     <div>
+      <h2
+        style={{
+          margin: 0,
+          padding: "0 0 0.5rem 1rem",
+          borderBottom: "1px solid var(--text-color-dark2)",
+        }}
+      >
+        Home
+      </h2>
       <NewPost />
       <FilterTab />
       {filteredPosts.length > 0 ? (

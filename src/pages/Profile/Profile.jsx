@@ -68,20 +68,24 @@ const Profile = () => {
             }
             alt="banner pic"
           />
-          <div className="profile_header">
-            <img
-              src={
-                profileOfUser.profilePic
-                  ? profileOfUser.profilePic
-                  : defaultAvatar
-              }
-              alt="user_pic"
-              className="profile_img"
-            />
-            <div onClick={() => setShowProfileEditModal(!showProfileEditModal)}>
-              <button className="btn edit_profile_btn">
-                <i className="fa-solid fa-pen-to-square"></i> Edit Profile
-              </button>
+          <div className="header_wrapper">
+            <div className="profile_header">
+              <img
+                src={
+                  profileOfUser.profilePic
+                    ? profileOfUser.profilePic
+                    : defaultAvatar
+                }
+                alt="user_pic"
+                className="profile_img"
+              />
+              <div
+                onClick={() => setShowProfileEditModal(!showProfileEditModal)}
+              >
+                <button className="btn edit_profile_btn">
+                  <i className="fa-solid fa-pen-to-square"></i> Edit Profile
+                </button>
+              </div>
             </div>
           </div>
           <div className="header_info">
@@ -150,7 +154,7 @@ const Profile = () => {
                 textAlign: "center",
               }}
             >
-              You have not created any posts
+              Account has no posts
             </h4>
           )}
         </div>
