@@ -15,5 +15,29 @@
 .filter_modal {
   position: absolute;
   background-color: var(--bg4-color);
+  width: max-content;
   right: 1rem;
+  padding: 0.8rem;
+  border-radius: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.filter_select {
+  width: 100%;
+  cursor: pointer;
+  border: none;
+  outline: none;
+  background: none;
+  color: inherit;
+  font: inherit;
+  font-size: 1rem;
+  font-weight: bold;
+  padding: 0.4rem;
+  margin: 0.1rem;
+  /* border: 1px solid var(--text-color-dark); */
+  border-radius: 0.6rem;
+  color: var(--text-color-dark);
 }

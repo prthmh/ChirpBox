@@ -24,7 +24,9 @@ const AppRoutes = () => {
           path="/feed"
           element={
             <PrivateRoute>
-              <Feed />
+              <PageTemplate>
+                <Feed />
+              </PageTemplate>
             </PrivateRoute>
           }
         />
@@ -42,7 +44,9 @@ const AppRoutes = () => {
           path="/explore"
           element={
             <PrivateRoute>
-              <Explore />
+              <PageTemplate>
+                <Explore />
+              </PageTemplate>
             </PrivateRoute>
           }
         />

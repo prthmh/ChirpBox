@@ -1,8 +1,8 @@
 .new_post_box {
-  width: 30rem;
+  width: max-content;
   padding: 1rem;
   margin: 1rem;
-  height: 12rem;
+  height: max-content;
   overflow-y: auto;
   background-color: #cadaf3;
   border-radius: 1.5rem;

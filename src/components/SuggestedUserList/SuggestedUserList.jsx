@@ -46,8 +46,11 @@ const SuggestedUserList = () => {
         onChange={(e) => handleChange(e)}
       />
       <h3>Suggested Users</h3>
-
-      <UserList usersInList={suggestedUsers} />
+      {suggestedUsers.length > 0 ? (
+        <UserList usersInList={suggestedUsers} />
+      ) : (
+        <h4>No Users</h4>
+      )}
     </div>
   );
 };

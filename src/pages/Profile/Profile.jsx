@@ -1,6 +1,6 @@
 import React from "react";
 import "./Profile.css";
-// import { usePost } from "../../context/PostContext";
+import { usePost } from "../../context/PostContext";
 import { useState } from "react";
 import { useParams } from "react-router-dom";
 import { useEffect } from "react";
@@ -17,9 +17,9 @@ import { defaultAvatar, defaultBannerImg } from "../../utils/profileAvatars";
 
 const Profile = () => {
   const { userId } = useParams();
-  // const {
-  //   postState: { allPosts },
-  // } = usePost();
+  const {
+    postState: { allPosts },
+  } = usePost();
   const {
     dataState: { allUsers },
   } = useData();
@@ -51,7 +51,7 @@ const Profile = () => {
     return () => {
       clearTimeout(timer);
     };
-  }, [profileOfUser, allUsers]);
+  }, [profileOfUser, allUsers, allPosts]);
 
   return (
     <>

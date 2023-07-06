@@ -10,6 +10,7 @@ const FilterTab = () => {
     postDispatch,
   } = usePost();
   const [showFilterModal, setShowFilterModal] = useState(false);
+
   return (
     <div className="filter_tab">
       <div> {filter} Posts</div>
@@ -23,6 +24,14 @@ const FilterTab = () => {
           <div className="filter_modal">
             <button
               className="filter_select"
+              style={{
+                backgroundColor:
+                  filter === "Trending" ? "var(--main-bg-color)" : "",
+                border:
+                  filter === "Trending"
+                    ? ""
+                    : "1px solid var(--text-color-dark)",
+              }}
               onClick={(event) => {
                 event.stopPropagation();
                 postDispatch({
@@ -32,10 +41,16 @@ const FilterTab = () => {
                 setShowFilterModal(false);
               }}
             >
-              Trending
+              <i className="fa-solid fa-arrow-trend-up"></i> Trending
             </button>
             <button
               className="filter_select"
+              style={{
+                backgroundColor:
+                  filter === "Latest" ? "var(--main-bg-color)" : "",
+                border:
+                  filter === "Latest" ? "" : "1px solid var(--text-color-dark)",
+              }}
               onClick={(event) => {
                 event.stopPropagation();
                 postDispatch({
@@ -45,10 +60,16 @@ const FilterTab = () => {
                 setShowFilterModal(false);
               }}
             >
-              Latest
+              <i className="fa-sharp fa-solid fa-arrow-up"></i> Latest
             </button>
             <button
               className="filter_select"
+              style={{
+                backgroundColor:
+                  filter === "Oldest" ? "var(--main-bg-color)" : "",
+                border:
+                  filter === "Oldest" ? "" : "1px solid var(--text-color-dark)",
+              }}
               onClick={(event) => {
                 event.stopPropagation();
                 postDispatch({
@@ -58,7 +79,7 @@ const FilterTab = () => {
                 setShowFilterModal(false);
               }}
             >
-              Oldest
+              <i className="fa-sharp fa-solid fa-arrow-down"></i> Oldest
             </button>
           </div>
         )}
