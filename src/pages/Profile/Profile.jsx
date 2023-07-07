@@ -22,6 +22,9 @@ const Profile = () => {
   } = usePost();
   const {
     dataState: { allUsers },
+    followUserFunc,
+    unfollowUserFunc,
+    isAlreadyFollowed,
   } = useData();
   const { user } = useAuth();
   // console.log("profile",allUsers);
@@ -79,12 +82,31 @@ const Profile = () => {
                 alt="user_pic"
                 className="profile_img"
               />
-              <div
-                onClick={() => setShowProfileEditModal(!showProfileEditModal)}
-              >
-                <button className="btn edit_profile_btn">
-                  <i className="fa-solid fa-pen-to-square"></i> Edit Profile
-                </button>
+              <div>
+                {user?.username === profileOfUser?.username ? (
+                  <button
+                    className="btn profile_action_btn"
+                    onClick={() =>
+                      setShowProfileEditModal(!showProfileEditModal)
+                    }
+                  >
+                    <i className="fa-solid fa-pen-to-square"></i> Edit Profile
+                  </button>
+                ) : isAlreadyFollowed(profileOfUser._id) ? (
+                  <button
+                    onClick={() => unfollowUserFunc(profileOfUser._id)}
+                    className="btn unfollow profile_action_btn"
+                  >
+                    Unfollow
+                  </button>
+                ) : (
+                  <button
+                    onClick={() => followUserFunc(profileOfUser._id)}
+                    className="btn follow profile_action_btn"
+                  >
+                    Follow
+                  </button>
+                )}
               </div>
             </div>
           </div>

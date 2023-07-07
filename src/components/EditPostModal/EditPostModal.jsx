@@ -1,16 +1,39 @@
 import React, { useState } from "react";
 import "./EditModal.css";
 import { usePost } from "../../context/PostContext";
+import { uploadMedia } from "../../utils/uploadMedia";
+import EmojiPicker from "emoji-picker-react";
 
 const EditPostModal = ({ setShowEditModal, post }) => {
-  const [input, setInput] = useState(post.content);
+  const [input, setInput] = useState(post);
   const { editPostFunc } = usePost();
+  const [editPostMedia, setEditPostMedia] = useState(null);
+  const [showEmojiModal, setShowEmojiModal] = useState(false);
 
-  const editPostHandler = (event) => {
+  const handleEmojiInInput = (emojiObj) => {
+    const emoji = emojiObj.emoji;
+    setInput({ ...input, content: input?.content + emoji });
+    // const updatedContent = content + emoji;
+    // setContent(updatedContent);
+    // setShowEmojiModal(false);
+  };
+
+  const editPostHandler = async (event) => {
     event.preventDefault();
-    editPostFunc(post._id, input);
+    if (editPostMedia) {
+      const res = await uploadMedia(editPostMedia);
+      console.log("edit img res", res);
+      editPostFunc(post._id, {
+        content: input?.content,
+        mediaURL: res.url,
+        mediaAlt: res.original_filename,
+      });
+    } else {
+      editPostFunc(post._id, input);
+    }
     setShowEditModal(false);
   };
+  
 
   return (
     <div className="edit_post">
@@ -27,10 +50,63 @@ const EditPostModal = ({ setShowEditModal, post }) => {
       <form onSubmit={editPostHandler}>
         <textarea
           className="edit_post_input"
-          value={input}
-          onChange={(event) => setInput(event.target.value)}
+          value={input?.content}
+          onChange={(event) =>
+            setInput({ ...input, content: event.target.value })
+          }
         ></textarea>
-        <button type="submit" className="btn">Save</button>
+        {input?.mediaURL?.length > 0 && (
+          <div className="edit_post_media">
+            <img
+              className="edit_post_img"
+              src={
+                editPostMedia
+                  ? URL.createObjectURL(editPostMedia)
+                  : input?.mediaURL
+              }
+              alt="img"
+            />
+            <div
+              className="cancel_edit_img"
+              onClick={() =>
+                setInput((prevState) => ({ ...prevState, mediaURL: "" }))
+              }
+            >
+              <i className="fa-solid fa-xmark"></i>
+            </div>
+          </div>
+        )}
+        <label className="upload_img_edit_post">
+          <input
+            type="file"
+            accept="image/*"
+            onChange={(e) => {
+              setEditPostMedia(e.target.files[0]);
+            }}
+          />
+          <i className="fa-solid fa-image"></i>
+        </label>
+        <div>
+          <label
+            onClick={() => setShowEmojiModal(!showEmojiModal)}
+            className="emoji_btn"
+          >
+            <i className="fa-solid fa-face-smile"></i>
+          </label>
+          {showEmojiModal && (
+            <div className="emoji_modal">
+              <EmojiPicker
+                onEmojiClick={handleEmojiInInput}
+                height={400}
+                width={300}
+                searchDisabled={true}
+              />
+            </div>
+          )}
+        </div>
+        <button type="submit" className="btn">
+          Save
+        </button>
       </form>
     </div>
   );

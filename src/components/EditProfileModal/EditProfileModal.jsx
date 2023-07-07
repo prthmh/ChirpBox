@@ -4,7 +4,7 @@ import { useState } from "react";
 import { useData } from "../../context/DataContext";
 import AvatarModal from "../AvatarModal/AvatarModal";
 import { useAuth } from "../../context/AuthContext";
-import { defaultAvatar } from "../../utils/profileAvatars";
+import { defaultAvatar, defaultBannerImg } from "../../utils/profileAvatars";
 
 const EditProfileModal = ({ setShowProfileEditModal, editUser }) => {
   const { user } = useAuth();
@@ -13,7 +13,11 @@ const EditProfileModal = ({ setShowProfileEditModal, editUser }) => {
   const { editProfileFunc } = useData();
 
   const [showAvatarModal, setShowAvatarModal] = useState(false);
-  // const [selectedAvatar, setSelectedAvatar] = useState(null);
+  const [selectedAvatar, setSelectedAvatar] = useState(null);
+  const [profileImg, setProfileImg] = useState(editUser.profilePic);
+  const [selectedBannerPic, setSelectedBannerPic] = useState(
+    editUser.bannerImg
+  );
 
   const inputChangeHandler = (event) => {
     setEditData((prevData) => ({
@@ -24,13 +28,16 @@ const EditProfileModal = ({ setShowProfileEditModal, editUser }) => {
 
   const editProfileHandler = (event) => {
     event.preventDefault();
-    editProfileFunc({ ...editData, profilePic: user.profilePic });
-    // console.log("edit data modal", editData);
+    editProfileFunc({
+      ...editData,
+      profilePic: selectedAvatar ? selectedAvatar : profileImg,
+      bannerImg: selectedBannerPic ? selectedBannerPic : editUser.bannerImg,
+    });
     setShowProfileEditModal(false);
   };
 
   return (
-    <div className="profile_modal"> 
+    <div className="profile_modal">
       <div className="modal_header">
         <h2 style={{ margin: "0" }}>Edit Profile</h2>
         <div
@@ -43,13 +50,55 @@ const EditProfileModal = ({ setShowProfileEditModal, editUser }) => {
       </div>
       <div className="edit_pic">
         <img
-          src={editUser.profilePic ? editUser.profilePic : defaultAvatar}
+          src={selectedBannerPic ? selectedBannerPic : defaultBannerImg}
+          alt="banner img"
+          className="edit_banner_img"
+        />
+        <img
+          src={
+            selectedAvatar
+              ? selectedAvatar
+              : profileImg
+              ? profileImg
+              : defaultAvatar
+          }
           alt="user_pic"
           className="edit_img"
         />
         <button onClick={() => setShowAvatarModal(!showAvatarModal)}>
           Select Avatar
         </button>
+        <label onClick={(e) => e.stopPropagation()}>
+          Upload an image
+          <input
+            type="file"
+            accept="image/*"
+            onChange={(e) => {
+              e.stopPropagation();
+              setSelectedAvatar(null);
+              if (Math.round(e.target.files[0]?.size / 1024000) > 1) {
+                alert("File size should not be more than 1Mb");
+              } else {
+                setProfileImg(URL.createObjectURL(e.target.files[0]));
+              }
+            }}
+          />
+        </label>
+        <label>
+          Upload banner image
+          <input
+            type="file"
+            accept="image/*"
+            onChange={(e) => {
+              e.stopPropagation();
+              if (Math.round(e.target.files[0]?.size / 1024000) > 5) {
+                alert("File size should not be more than 5Mb");
+              } else {
+                setSelectedBannerPic(URL.createObjectURL(e.target.files[0]));
+              }
+            }}
+          />
+        </label>
       </div>
 
       <form className="edit_form" onSubmit={editProfileHandler}>
@@ -98,7 +147,10 @@ const EditProfileModal = ({ setShowProfileEditModal, editUser }) => {
       </form>
       {showAvatarModal && (
         <div className="avatar_modal">
-          <AvatarModal setShowAvatarModal={setShowAvatarModal} />
+          <AvatarModal
+            setShowAvatarModal={setShowAvatarModal}
+            setSelectedAvatar={setSelectedAvatar}
+          />
         </div>
       )}
     </div>

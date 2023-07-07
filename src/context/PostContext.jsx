@@ -115,12 +115,12 @@ export const PostProvider = ({ children }) => {
     }
   };
 
-  const editPostFunc = async (postId, content) => {
+  const editPostFunc = async (postId, { content, mediaURL, mediaAlt }) => {
     try {
       const {
         status,
         data: { posts },
-      } = await editPostService(postId, content, token);
+      } = await editPostService(postId, { content, mediaURL, mediaAlt }, token);
       if (status === 201) {
         postDispatch({ type: ACTIONS.EDIT_POST, payload: posts });
       }

@@ -90,7 +90,8 @@ const NewPost = ({ setShowCreatePost }) => {
                 <EmojiPicker
                   onEmojiClick={handleEmojiInInput}
                   height={400}
-                  width={350}
+                  width={300}
+                  searchDisabled={true}
                 />
               </div>
             )}

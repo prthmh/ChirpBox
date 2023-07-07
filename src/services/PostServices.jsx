@@ -54,9 +54,13 @@ export const deletePostService = async (postId, token) =>
     headers: { authorization: token },
   });
 
-export const editPostService = async (postId, content, token) =>
+export const editPostService = async (
+  postId,
+  { content, mediaURL, mediaAlt },
+  token
+) =>
   await axios.post(
     `/api/posts/edit/${postId}`,
-    { postData: { content } },
+    { postData: { content, mediaURL, mediaAlt } },
     { headers: { authorization: token } }
   );

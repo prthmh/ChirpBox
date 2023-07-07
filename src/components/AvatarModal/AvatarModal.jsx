@@ -1,21 +1,22 @@
 import React, { useState } from "react";
 import "./AvatarModal.css";
 import { avatarAry } from "../../utils/profileAvatars";
-import { useAuth } from "../../context/AuthContext";
-import { useData } from "../../context/DataContext";
-import { ACTIONS } from "../../utils/constants";
+// import { useAuth } from "../../context/AuthContext";
+// import { useData } from "../../context/DataContext";
+// import { ACTIONS } from "../../utils/constants";
 
-const AvatarModal = ({ setShowAvatarModal }) => {
-  const [selectedAvatar, setSelectedAvatar] = useState("");
-  const { user, setUser } = useAuth();
-  const { dataDispatch } = useData();
+const AvatarModal = ({ setShowAvatarModal, setSelectedAvatar }) => {
+  const [avatar, setavatar] = useState("");
+  // const { user, setUser } = useAuth();
+  // const { dataDispatch } = useData();
 
   const handleAvatar = () => {
-    setUser((prevState) => ({ ...prevState, profilePic: selectedAvatar }));
-    dataDispatch({
-      type: ACTIONS.UPDATE_AVATAR,
-      payload: [user, selectedAvatar],
-    });
+    // setUser((prevState) => ({ ...prevState, profilePic: avatar }));
+    // dataDispatch({
+    //   type: ACTIONS.UPDATE_AVATAR,
+    //   payload: [user, avatar],
+    // });
+    setSelectedAvatar(avatar);
     setShowAvatarModal(false);
   };
 
@@ -38,10 +39,10 @@ const AvatarModal = ({ setShowAvatarModal }) => {
             src={pic}
             alt="avatar"
             className="avatar_pic"
-            onClick={() => setSelectedAvatar(pic)}
+            onClick={() => setavatar(pic)}
             style={{
               border:
-                pic === selectedAvatar
+                pic === avatar
                   ? "2px solid #323d6c"
                   : "2px solid var(--bg3-color)",
             }}

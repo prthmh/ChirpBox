@@ -17,7 +17,6 @@ const Feed = () => {
       post.username === user.username ||
       user.following.some((item) => item.username === post.username)
   );
-  console.log(postsOnFeed, filter);
   const filteredPosts = filterPosts(postsOnFeed, filter);
   // console.log(filteredPosts);
 
