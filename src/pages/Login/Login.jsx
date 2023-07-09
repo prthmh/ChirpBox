@@ -9,6 +9,7 @@ const Login = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const [loginData, setLoginData] = useState({ username: "", password: "" });
+  const [showPassword, setShowPassword] = useState(false);
 
   const inputChangeHandler = (event) => {
     setLoginData((prevData) => ({
@@ -59,13 +60,20 @@ const Login = () => {
           <label className="login_label">
             Password
             <input
-              type="password"
+              type={showPassword ? "text" : "password"}
               name="password"
               placeholder="Enter your password"
               value={loginData.password}
               onChange={inputChangeHandler}
               className="login_input"
             />
+            <span onClick={() => setShowPassword(!showPassword)}>
+              {showPassword ? (
+                <i className="fa-solid fa-eye-slash"></i>
+              ) : (
+                <i className="fa-solid fa-eye"></i>
+              )}
+            </span>
           </label>
           <label>
             <input type="checkbox" />

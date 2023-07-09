@@ -2,7 +2,7 @@
   width: 30rem;
   padding: 1rem;
   margin: 1rem;
-  max-height: 90vh;
+  height: fit-content;
   overflow-y: auto;
   background-color: var(--bg3-color);
   border-radius: 1.5rem;
@@ -30,8 +30,8 @@
 }
 
 .edit_post_img {
-  width: 400px;
-  height: 300px;
+  width: 15rem;
+  height: 10rem;
   object-fit: cover;
   border-radius: 1rem;
 }
@@ -50,4 +50,10 @@
   border-radius: 50%;
   padding: 0 0.2rem;
   cursor: pointer;
+}
+
+.edit_post_btns {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.6rem;
 }

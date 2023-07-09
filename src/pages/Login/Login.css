@@ -28,7 +28,16 @@
   flex-direction: column;
   flex-wrap: wrap;
   font-size: 1.1rem;
+  position: relative;
 }
+
+.login_label span {
+  position: absolute;
+  left: 16rem;
+  top: 2rem;
+  color: var(--text-color-dark);
+}
+
 .login_input {
   border: 1px solid var(--text-color-dark);
   border-radius: 0.5rem;

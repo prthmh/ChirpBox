@@ -85,7 +85,13 @@ export const PostProvider = ({ children }) => {
     return Boolean(isPresent);
   };
 
-  const createNewPostFunc = async ({ content, media, mediaAlt }) => {
+  const createNewPostFunc = async ({
+    content,
+    media,
+    mediaAlt,
+    setDisablePostBtn,
+    toastId,
+  }) => {
     try {
       const {
         status,
@@ -93,6 +99,15 @@ export const PostProvider = ({ children }) => {
       } = await createNewPostService(content, media, mediaAlt, token);
       if (status === 201) {
         postDispatch({ type: ACTIONS.CREATE_NEW_POST, payload: posts });
+        if (setDisablePostBtn) {
+          setDisablePostBtn(false);
+        }
+        toast.update(toastId, {
+          render: "New post created.",
+          type: "success",
+          isLoading: false,
+          autoClose: 800,
+        });
       }
     } catch (error) {
       console.error("Error occured while creating post", error);
@@ -115,7 +130,7 @@ export const PostProvider = ({ children }) => {
     }
   };
 
-  const editPostFunc = async (postId, { content, mediaURL, mediaAlt }) => {
+  const editPostFunc = async (postId, toastId, { content, mediaURL, mediaAlt }) => {
     try {
       const {
         status,
@@ -123,6 +138,12 @@ export const PostProvider = ({ children }) => {
       } = await editPostService(postId, { content, mediaURL, mediaAlt }, token);
       if (status === 201) {
         postDispatch({ type: ACTIONS.EDIT_POST, payload: posts });
+        toast.update(toastId, {
+          render: "Post edited.",
+          type: "success",
+          isLoading: false,
+          autoClose: 800,
+        });
       }
     } catch (error) {
       console.error("Error in edit post", error);

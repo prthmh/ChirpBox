@@ -3,6 +3,7 @@ import "./EditModal.css";
 import { usePost } from "../../context/PostContext";
 import { uploadMedia } from "../../utils/uploadMedia";
 import EmojiPicker from "emoji-picker-react";
+import { toast } from "react-toastify";
 
 const EditPostModal = ({ setShowEditModal, post }) => {
   const [input, setInput] = useState(post);
@@ -20,20 +21,20 @@ const EditPostModal = ({ setShowEditModal, post }) => {
 
   const editPostHandler = async (event) => {
     event.preventDefault();
+    const toastId = toast.loading("Saving Post...", { autoClose: false });
     if (editPostMedia) {
       const res = await uploadMedia(editPostMedia);
       console.log("edit img res", res);
-      editPostFunc(post._id, {
+      editPostFunc(post._id, toastId, {
         content: input?.content,
         mediaURL: res.url,
         mediaAlt: res.original_filename,
       });
     } else {
-      editPostFunc(post._id, input);
+      editPostFunc(post._id, input, toastId);
     }
     setShowEditModal(false);
   };
-  
 
   return (
     <div className="edit_post">
@@ -76,37 +77,51 @@ const EditPostModal = ({ setShowEditModal, post }) => {
             </div>
           </div>
         )}
-        <label className="upload_img_edit_post">
-          <input
-            type="file"
-            accept="image/*"
-            onChange={(e) => {
-              setEditPostMedia(e.target.files[0]);
-            }}
-          />
-          <i className="fa-solid fa-image"></i>
-        </label>
-        <div>
-          <label
-            onClick={() => setShowEmojiModal(!showEmojiModal)}
-            className="emoji_btn"
-          >
-            <i className="fa-solid fa-face-smile"></i>
+        <div className="edit_post_btns">
+          <div>
+            <label
+              onClick={() => setShowEmojiModal(!showEmojiModal)}
+              className="emoji_btn"
+            >
+              <i className="fa-solid fa-face-smile"></i>
+            </label>
+            {showEmojiModal && (
+              <div className="emoji_modal">
+                <EmojiPicker
+                  onEmojiClick={handleEmojiInInput}
+                  height={300}
+                  width={300}
+                  searchDisabled={true}
+                />
+              </div>
+            )}
+          </div>
+          <label className="upload_img_edit_post emoji_btn">
+            <input
+              type="file"
+              accept="image/*"
+              style={{ display: "none" }}
+              onChange={(e) => {
+                if (Math.round(e.target.files[0].size / 1024000) > 1) {
+                  toast.warn("File size should be below 1MB", {
+                    position: "top-right",
+                  });
+                } else {
+                  setEditPostMedia(e.target.files[0]);
+                  setInput((prevState) => ({
+                    ...prevState,
+                    mediaURL: URL.createObjectURL(e.target.files[0]),
+                  }));
+                }
+              }}
+            />
+            <i className="fa-solid fa-image"></i>
           </label>
-          {showEmojiModal && (
-            <div className="emoji_modal">
-              <EmojiPicker
-                onEmojiClick={handleEmojiInInput}
-                height={400}
-                width={300}
-                searchDisabled={true}
-              />
-            </div>
-          )}
+
+          <button type="submit" className="btn">
+            Save
+          </button>
         </div>
-        <button type="submit" className="btn">
-          Save
-        </button>
       </form>
     </div>
   );

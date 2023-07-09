@@ -20,6 +20,10 @@ const Signup = () => {
   });
   const { userSignUpFunc } = useAuth();
   const navigate = useNavigate();
+  const [showPassword, setShowPassword] = useState({
+    pwd: false,
+    confirmPwd: false,
+  });
 
   const inputChangeHandler = (event) => {
     setSignUpData((prevData) => ({
@@ -36,7 +40,7 @@ const Signup = () => {
     } else if (password !== confirmpassword) {
       toast.error("Your password should match");
     } else {
-      console.log("signup data",signUpData)
+      console.log("signup data", signUpData);
       userSignUpFunc(signUpData);
     }
   };
@@ -97,7 +101,7 @@ const Signup = () => {
           <label className="login_label">
             Password
             <input
-              type="password"
+              type={showPassword.pwd ? "text" : "password"}
               name="password"
               placeholder="Enter your password"
               value={signUpData.password}
@@ -105,11 +109,25 @@ const Signup = () => {
               required
               className="login_input"
             />
+            <span
+              onClick={() =>
+                setShowPassword((prevState) => ({
+                  ...prevState,
+                  pwd: !showPassword.pwd,
+                }))
+              }
+            >
+              {showPassword ? (
+                <i className="fa-solid fa-eye-slash"></i>
+              ) : (
+                <i className="fa-solid fa-eye"></i>
+              )}
+            </span>
           </label>
           <label className="login_label">
             Confirm Password
             <input
-              type="password"
+              type={showPassword.confirmPwd ? "text" : "password"}
               name="confirmpassword"
               placeholder="Enter your password again"
               value={signUpData.confirmpassword}
@@ -117,6 +135,20 @@ const Signup = () => {
               required
               className="login_input"
             />
+            <span
+              onClick={() =>
+                setShowPassword((prevState) => ({
+                  ...prevState,
+                  confirmPwd: !showPassword.confirmPwd,
+                }))
+              }
+            >
+              {showPassword ? (
+                <i className="fa-solid fa-eye-slash"></i>
+              ) : (
+                <i className="fa-solid fa-eye"></i>
+              )}
+            </span>
           </label>
           <label>
             <input

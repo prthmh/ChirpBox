@@ -5,6 +5,7 @@ import { useData } from "../../context/DataContext";
 import AvatarModal from "../AvatarModal/AvatarModal";
 import { useAuth } from "../../context/AuthContext";
 import { defaultAvatar, defaultBannerImg } from "../../utils/profileAvatars";
+import { toast } from "react-toastify";
 
 const EditProfileModal = ({ setShowProfileEditModal, editUser }) => {
   const { user } = useAuth();
@@ -82,7 +83,9 @@ const EditProfileModal = ({ setShowProfileEditModal, editUser }) => {
                 e.stopPropagation();
                 setSelectedAvatar(null);
                 if (Math.round(e.target.files[0]?.size / 1024000) > 1) {
-                  alert("File size should not be more than 1Mb");
+                  toast.warn("File size should be below 1MB", {
+                    position: "top-right",
+                  });
                 } else {
                   setProfileImg(URL.createObjectURL(e.target.files[0]));
                 }
@@ -97,8 +100,10 @@ const EditProfileModal = ({ setShowProfileEditModal, editUser }) => {
               className="edit_img_upl"
               onChange={(e) => {
                 e.stopPropagation();
-                if (Math.round(e.target.files[0]?.size / 1024000) > 5) {
-                  alert("File size should not be more than 5Mb");
+                if (Math.round(e.target.files[0]?.size / 1024000) > 2) {
+                  toast.warn("File size should be below 2MB", {
+                    position: "top-right",
+                  });
                 } else {
                   setSelectedBannerPic(URL.createObjectURL(e.target.files[0]));
                 }

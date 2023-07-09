@@ -14,6 +14,7 @@ const NewPost = ({ setShowCreatePost }) => {
   const [content, setContent] = useState("");
   const [showEmojiModal, setShowEmojiModal] = useState(false);
   const [media, setMedia] = useState(null);
+  const [disablePostBtn, setDisablePostBtn] = useState(false);
 
   const textAreaRef = useRef();
 
@@ -26,18 +27,26 @@ const NewPost = ({ setShowCreatePost }) => {
 
   const newPosthandler = async (event) => {
     event.preventDefault();
+    setDisablePostBtn(true);
+    const toastId = toast.loading("Creating Post...", { autoClose: false });
     if (media) {
       const res = await uploadMedia(media);
-      console.log(res);
       createNewPostFunc({
         content,
         media: res.url,
         mediaAlt: res.original_filename,
+        setDisablePostBtn,
+        toastId,
       });
     } else {
-      createNewPostFunc({ content, media: "", mediaAlt: "" });
+      createNewPostFunc({
+        content,
+        media: "",
+        mediaAlt: "",
+        setDisablePostBtn,
+        toastId,
+      });
     }
-    toast.success("Created new post");
     if (setShowCreatePost) {
       setShowCreatePost(false);
     }
@@ -81,17 +90,6 @@ const NewPost = ({ setShowCreatePost }) => {
         )}
         <div className="post_call_to_action_btns">
           <div>
-            <label>
-              <input
-                type="file"
-                accept="image/*"
-                onChange={(e) => setMedia(e.target.files[0])}
-                className="upload_image"
-              />
-              <i className="fa-solid fa-image btn"></i>
-            </label>
-          </div>
-          <div>
             <label
               onClick={() => setShowEmojiModal(!showEmojiModal)}
               className="emoji_btn"
@@ -109,7 +107,28 @@ const NewPost = ({ setShowCreatePost }) => {
               </div>
             )}
           </div>
-          <button type="submit" className="btn">
+          <div>
+            <label>
+              <input
+                type="file"
+                accept="image/*"
+                onChange={(e) =>
+                  Math.round(e.target.files[0].size / 1024000) > 1
+                    ? toast.warn("File size should be below 1MB", {
+                        position: "top-right",
+                      })
+                    : setMedia(e.target.files[0])
+                }
+                className="upload_image"
+              />
+              <i className="fa-solid fa-image btn"></i>
+            </label>
+          </div>
+          <button
+            type="submit"
+            className="btn"
+            disabled={(content === "" && media === null) || disablePostBtn}
+          >
             Post
           </button>
         </div>
