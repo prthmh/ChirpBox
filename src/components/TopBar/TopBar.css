@@ -1,0 +1,70 @@
+.top_section {
+  border-bottom: 1px solid var(--text-color-dark);
+  background-color: var(--main-bg-color);
+}
+
+.site_logo {
+  width: 2rem;
+  height: 2rem;
+}
+.top_bar {
+  padding: 0.6rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 8rem 0 4rem;
+}
+
+.site_name {
+  font-size: 1.5rem;
+  color: var(--text-color-dark);
+  font-weight: bolder;
+}
+
+.logo {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.user_search {
+  position: relative;
+}
+.searched_users {
+  padding: 0.6rem;
+  width: 18rem;
+  background-color: var(--main-bg-color);
+  border: 1px solid var(--text-color-dark);
+  border-radius: 0.3rem;
+  position: absolute;
+  z-index: 10;
+  left: -1.6rem;
+}
+
+.search_input {
+  background-color: var(--bg4-color);
+  border: none;
+  height: 1.5rem;
+  border-radius: 1.6rem;
+  font: inherit;
+  padding: 0.5rem;
+}
+.search_input::placeholder {
+  color: var(--text-color-dark);
+}
+
+.search_icon {
+  margin-right: 0.3rem;
+  color: var(--text-color-dark);
+  font-size: 1.2rem;
+}
+
+@media screen and (max-width: 500px) {
+  .top_bar {
+    justify-content: space-between;
+    margin: 0;
+  }
+  .searched_users {
+    left: -5.5rem;
+  }
+}

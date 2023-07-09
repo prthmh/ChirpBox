@@ -40,7 +40,8 @@ const PageNavigations = () => {
           className="create_post"
           onClick={() => setShowCreatePost(!showCreatePost)}
         >
-          Create New Post
+          <i className="fa-solid fa-plus"></i>
+          <span className="nav_name">Create New Post</span>
         </button>
 
         <p
@@ -51,7 +52,6 @@ const PageNavigations = () => {
           <i className="fa-solid fa-right-from-bracket"></i>
           <span className="nav_name">Logout</span>
         </p>
-      </div>
       <div className="user_in_nav">
         <div>
           <img
@@ -61,14 +61,15 @@ const PageNavigations = () => {
           />
         </div>
         <div>
-          <span
+          <span className="nav_name"
             style={{ color: "var(--text-color-dark)", fontWeight: "bolder" }}
           >
             {user.firstName} {user.lastName}
           </span>
           <br />
-          <span style={{ color: "#71717a" }}>@{user.username}</span>
+          <span className="nav_name" style={{ color: "#71717a" }}>@{user.username}</span>
         </div>
+      </div>
       </div>
       {showCreatePost && (
         <div className="new_post_modal">

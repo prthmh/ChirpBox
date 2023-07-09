@@ -23,8 +23,10 @@
 .edit_img {
   border-radius: 50%;
   width: 15%;
-  height: 5rem;
+  height: 15%;
   object-fit: cover;
+  aspect-ratio: 2/2;
+  margin: 1rem 0;
 }
 
 .edit_form {
@@ -68,7 +70,46 @@
 
 .edit_banner_img {
   width: 100%;
-  height: 3rem;
+  height: 5rem;
   object-fit: cover;
   border-radius: 0.8rem;
+}
+
+.edit_modal_btn {
+  border: none;
+  margin: 0;
+  border-radius: 0.5rem;
+  padding: 0.4rem;
+  background: none;
+  font: inherit;
+  cursor: pointer;
+  background-color: var(--text-color-dark3);
+  color: var(--text-color-light2);
+}
+
+.edit_modal_btn:hover {
+  opacity: 0.9;
+}
+
+.save_btn {
+  width: fit-content;
+  align-self: center;
+}
+
+.edit_img_upl {
+  display: none;
+}
+
+.edit_media_upload {
+  display: flex;
+  gap: 0.3rem;
+  margin: 1rem 0;
+}
+
+.upload_label {
+  cursor: pointer;
+  background-color: var(--text-color-dark3);
+  color: var(--text-color-light2);
+  border-radius: 0.5rem;
+  padding: 0.4rem;
 }

@@ -1,17 +1,16 @@
-import React from "react";
-import "./Profile.css";
+import React, { useState, useEffect } from "react";
 import { usePost } from "../../context/PostContext";
-import { useState } from "react";
-import { useParams } from "react-router-dom";
-import { useEffect } from "react";
+import { useNavigate, useParams } from "react-router-dom";
+import "./Profile.css";
+
+import { useData } from "../../context/DataContext";
+import { useAuth } from "../../context/AuthContext";
 import { getSingleUser } from "../../utils/getSingleUser";
 import Loader from "../../components/Loader/Loader";
 import NetworkModal from "../../components/NetworkModal/NetworkModal";
 import { getPostsOfUser } from "../../utils/getPostsOfUser";
 import PostsSection from "../../components/PostsSection/PostsSection";
 import EditProfileModal from "../../components/EditProfileModal/EditProfileModal";
-import { useData } from "../../context/DataContext";
-import { useAuth } from "../../context/AuthContext";
 import { defaultAvatar, defaultBannerImg } from "../../utils/profileAvatars";
 // import { useAuth } from "../../context/AuthContext";
 
@@ -29,6 +28,8 @@ const Profile = () => {
   const { user } = useAuth();
   // console.log("profile",allUsers);
   // const { user } = useAuth();
+  const navigate = useNavigate();
+
   const [profileOfUser, setProfileOfUser] = useState({});
   const [postsOnProfile, setPostsOnProfile] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
@@ -62,6 +63,20 @@ const Profile = () => {
         <Loader />
       ) : (
         <div>
+          <div className="back">
+            <div className="back_icon" onClick={() => navigate(-1)}>
+              <i className="fa-solid fa-arrow-left"></i>
+            </div>
+            <div className="header_name">
+              <h3>
+                {" "}
+                {profileOfUser.firstName} {profileOfUser.lastName}
+              </h3>
+              <p style={{ margin: "0", color: "rgb(113, 113, 122)" }}>
+                {postsOnProfile?.length} Post
+              </p>
+            </div>
+          </div>
           <img
             className="banner_img"
             src={

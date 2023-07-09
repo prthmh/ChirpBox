@@ -49,7 +49,7 @@ const AvatarModal = ({ setShowAvatarModal, setSelectedAvatar }) => {
           />
         ))}
       </div>
-      <button onClick={handleAvatar}>Save</button>
+      <button onClick={handleAvatar} className="edit_modal_btn" >Save</button>
     </div>
   );
 };

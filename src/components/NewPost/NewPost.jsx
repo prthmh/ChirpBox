@@ -53,7 +53,7 @@ const NewPost = ({ setShowCreatePost }) => {
       <img
         src={user.profilePic ? user.profilePic : defaultAvatar}
         alt="img"
-        className="post_img"
+        className="user_img"
       />
       {/* </div> */}
       <form onSubmit={newPosthandler} className="input_form">
@@ -66,18 +66,31 @@ const NewPost = ({ setShowCreatePost }) => {
             className="post_area"
           ></textarea>
         </div>
-        {media && <img src={URL.createObjectURL(media)} alt="upload_img" />}
-        <div className="upload_image">
-          <label>
-            <input
-              type="file"
-              accept="image/*"
-              onChange={(e) => setMedia(e.target.files[0])}
+        {media && (
+          <div className="new_post_media">
+            {" "}
+            <img
+              src={URL.createObjectURL(media)}
+              alt="upload_img"
+              className="uploaded_pic"
             />
-            <i className="fa-solid fa-image"></i>
-          </label>
-        </div>
+            <div className="cancel_img" onClick={() => setMedia(null)}>
+              <i className="fa-solid fa-xmark"></i>
+            </div>
+          </div>
+        )}
         <div className="post_call_to_action_btns">
+          <div>
+            <label>
+              <input
+                type="file"
+                accept="image/*"
+                onChange={(e) => setMedia(e.target.files[0])}
+                className="upload_image"
+              />
+              <i className="fa-solid fa-image btn"></i>
+            </label>
+          </div>
           <div>
             <label
               onClick={() => setShowEmojiModal(!showEmojiModal)}

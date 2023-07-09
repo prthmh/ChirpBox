@@ -65,40 +65,47 @@ const EditProfileModal = ({ setShowProfileEditModal, editUser }) => {
           alt="user_pic"
           className="edit_img"
         />
-        <button onClick={() => setShowAvatarModal(!showAvatarModal)}>
+        <button
+          onClick={() => setShowAvatarModal(!showAvatarModal)}
+          className="edit_modal_btn"
+        >
           Select Avatar
         </button>
-        <label onClick={(e) => e.stopPropagation()}>
-          Upload an image
-          <input
-            type="file"
-            accept="image/*"
-            onChange={(e) => {
-              e.stopPropagation();
-              setSelectedAvatar(null);
-              if (Math.round(e.target.files[0]?.size / 1024000) > 1) {
-                alert("File size should not be more than 1Mb");
-              } else {
-                setProfileImg(URL.createObjectURL(e.target.files[0]));
-              }
-            }}
-          />
-        </label>
-        <label>
-          Upload banner image
-          <input
-            type="file"
-            accept="image/*"
-            onChange={(e) => {
-              e.stopPropagation();
-              if (Math.round(e.target.files[0]?.size / 1024000) > 5) {
-                alert("File size should not be more than 5Mb");
-              } else {
-                setSelectedBannerPic(URL.createObjectURL(e.target.files[0]));
-              }
-            }}
-          />
-        </label>
+        <div className="edit_media_upload">
+          <label onClick={(e) => e.stopPropagation()}>
+            <span className="upload_label">Upload an Profile image</span>
+            <input
+              type="file"
+              accept="image/*"
+              className="edit_img_upl"
+              onChange={(e) => {
+                e.stopPropagation();
+                setSelectedAvatar(null);
+                if (Math.round(e.target.files[0]?.size / 1024000) > 1) {
+                  alert("File size should not be more than 1Mb");
+                } else {
+                  setProfileImg(URL.createObjectURL(e.target.files[0]));
+                }
+              }}
+            />
+          </label>
+          <label>
+            <span className="upload_label">Upload banner image</span>
+            <input
+              type="file"
+              accept="image/*"
+              className="edit_img_upl"
+              onChange={(e) => {
+                e.stopPropagation();
+                if (Math.round(e.target.files[0]?.size / 1024000) > 5) {
+                  alert("File size should not be more than 5Mb");
+                } else {
+                  setSelectedBannerPic(URL.createObjectURL(e.target.files[0]));
+                }
+              }}
+            />
+          </label>
+        </div>
       </div>
 
       <form className="edit_form" onSubmit={editProfileHandler}>
@@ -143,7 +150,9 @@ const EditProfileModal = ({ setShowProfileEditModal, editUser }) => {
             className="edit_input"
           />
         </label>
-        <button type="submit">Save</button>
+        <button type="submit" className="save_btn edit_modal_btn">
+          Save
+        </button>
       </form>
       {showAvatarModal && (
         <div className="avatar_modal">

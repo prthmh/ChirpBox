@@ -91,12 +91,12 @@ const PostsSection = ({ post }) => {
               <i className="fa-regular fa-bookmark" title="Bookmark"></i>
             )}
           </div>
-          <div>
+          {/* <div>
             <i className="fa-regular fa-comment"></i>
           </div>
           <div>
             <i className="fa-sharp fa-solid fa-share-nodes"></i>
-          </div>
+          </div> */}
           {post.username === user.username && (
             <div onClick={() => deletePostFunc(post._id)}>
               <i className="fa-solid fa-trash" title="Delete"></i>
