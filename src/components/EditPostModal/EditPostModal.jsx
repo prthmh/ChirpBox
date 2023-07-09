@@ -31,7 +31,7 @@ const EditPostModal = ({ setShowEditModal, post }) => {
         mediaAlt: res.original_filename,
       });
     } else {
-      editPostFunc(post._id, input, toastId);
+      editPostFunc(post._id, toastId, input);
     }
     setShowEditModal(false);
   };
