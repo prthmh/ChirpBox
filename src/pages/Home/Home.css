@@ -2,7 +2,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 80vh;
+  height: 90vh;
   margin: 0;
 }
 .home_page {
@@ -15,7 +15,7 @@
   border: none;
   font: inherit;
   cursor: pointer;
-  outline: none; 
+  outline: none;
   padding: 0.8rem;
   border-radius: 0.6rem;
   color: var(--text-color-light);
@@ -50,6 +50,9 @@
 
 .acc_btn:hover {
   opacity: 0.9;
+}
+.home_img {
+  width: 60%;
 }
 
 @media (min-width: 1024px) {
