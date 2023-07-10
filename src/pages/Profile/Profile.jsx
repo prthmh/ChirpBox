@@ -96,24 +96,26 @@ const Profile = () => {
                 alt="user_pic"
                 className="profile_img"
               />
-              <div className="header_btns" >
-                <p
-                  onClick={logOutFunc}
-                  style={{ cursor: "pointer" }}
-                  className="logout_btn"
-                >
-                  <i className="fa-solid fa-right-from-bracket"></i>
-                  <span className="logout_text">Logout</span>
-                </p>
+              <div className="header_btns">
                 {user?.username === profileOfUser?.username ? (
-                  <button
-                    className="btn profile_action_btn"
-                    onClick={() =>
-                      setShowProfileEditModal(!showProfileEditModal)
-                    }
-                  >
-                    <i className="fa-solid fa-pen-to-square"></i> Edit Profile
-                  </button>
+                  <>
+                    <p
+                      onClick={logOutFunc}
+                      style={{ cursor: "pointer" }}
+                      className="logout_btn"
+                    >
+                      <i className="fa-solid fa-right-from-bracket"></i>
+                      <span className="logout_text">Logout</span>
+                    </p>
+                    <button
+                      className="btn profile_action_btn"
+                      onClick={() =>
+                        setShowProfileEditModal(!showProfileEditModal)
+                      }
+                    >
+                      <i className="fa-solid fa-pen-to-square"></i> Edit Profile
+                    </button>
+                  </>
                 ) : isAlreadyFollowed(profileOfUser._id) ? (
                   <button
                     onClick={() => unfollowUserFunc(profileOfUser._id)}
