@@ -6,6 +6,7 @@ import { usePost } from "../../context/PostContext";
 import EditPostModal from "../EditPostModal/EditPostModal";
 import { defaultAvatar } from "../../utils/profileAvatars";
 import { getDate } from "../../utils/getDate";
+import { useNavigate } from "react-router-dom";
 
 const PostsSection = ({ post }) => {
   const { token, user } = useAuth();
@@ -15,6 +16,7 @@ const PostsSection = ({ post }) => {
     removeFromBookmarksFunc,
     isPostAlreadyBookmarked,
   } = useData();
+  const navigate = useNavigate();
 
   const { likePostFunc, disLikePostFunc, isPostAlreadyLiked, deletePostFunc } =
     usePost();
@@ -33,7 +35,11 @@ const PostsSection = ({ post }) => {
       />
       <div className="post_content">
         <div className="post_header">
-          <div className="header_content">
+          <div
+            className="header_content"
+            onClick={() => navigate(`/profile/${postOfUser._id}`)}
+            style={{ cursor: "pointer" }}
+          >
             <h4 style={{ margin: "0", display: "inline-block" }}>
               {postOfUser.firstName} {postOfUser.lastName}
             </h4>{" "}
