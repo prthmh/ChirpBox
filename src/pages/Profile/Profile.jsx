@@ -25,9 +25,8 @@ const Profile = () => {
     unfollowUserFunc,
     isAlreadyFollowed,
   } = useData();
-  const { user } = useAuth();
-  // console.log("profile",allUsers);
-  // const { user } = useAuth();
+  const { user, logOutFunc } = useAuth();
+
   const navigate = useNavigate();
 
   const [profileOfUser, setProfileOfUser] = useState({});
@@ -97,7 +96,15 @@ const Profile = () => {
                 alt="user_pic"
                 className="profile_img"
               />
-              <div>
+              <div className="header_btns" >
+                <p
+                  onClick={logOutFunc}
+                  style={{ cursor: "pointer" }}
+                  className="logout_btn"
+                >
+                  <i className="fa-solid fa-right-from-bracket"></i>
+                  <span className="logout_text">Logout</span>
+                </p>
                 {user?.username === profileOfUser?.username ? (
                   <button
                     className="btn profile_action_btn"

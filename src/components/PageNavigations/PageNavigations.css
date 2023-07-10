@@ -23,6 +23,7 @@
 .user_in_nav {
   display: flex;
   align-items: center;
+  /* position: relative; */
 }
 
 .user_pic_in_nav {
@@ -56,6 +57,29 @@
   inset: 0;
   z-index: 10;
   background-color: rgba(0, 0, 0, 0.5);
+}
+
+.user_nav_modal {
+  padding: 0.6rem;
+  width: 7rem;
+  background-color: var(--bg4-color);
+  border: 1px solid var(--text-color-dark);
+  border-radius: 0.3rem;
+  position: absolute;
+  top: -8.5rem;
+  right: 1rem;
+}
+.logoutbtn {
+  width: fit-content;
+  margin: 0;
+  background-color: #d2042d;
+  border-radius: 0.5rem;
+  padding: 0.4rem;
+  color: whitesmoke;
+}
+
+.logoutbtn:hover {
+  opacity: 0.9;
 }
 
 @media screen and (min-width: 1024px) {
@@ -97,7 +121,7 @@
   }
 
   .user_in_nav {
-    margin-top: 50%;
+    margin-top: 80%;
     display: grid;
     grid-template-columns: 0.4fr 1fr;
     gap: 1rem;
@@ -122,5 +146,9 @@
     inset: 0;
     z-index: 999;
     background-color: rgba(0, 0, 0, 0.5);
+  }
+  .user_nav_modal {
+    top: 22.8rem;
+    left: 4rem;
   }
 }

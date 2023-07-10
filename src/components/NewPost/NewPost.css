@@ -112,7 +112,16 @@
   padding: 0 0.2rem;
   cursor: pointer;
 }
-
+@media screen and (max-width: 1000px) {
+  .emoji_modal {
+    left: 36rem;
+  }
+}
+@media screen and (max-width: 860px) {
+  .emoji_modal {
+    left: 15rem;
+  }
+}
 @media screen and (max-width: 500px) {
   .emoji_modal {
     left: 8rem;

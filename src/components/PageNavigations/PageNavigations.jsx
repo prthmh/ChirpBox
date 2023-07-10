@@ -8,6 +8,7 @@ import { defaultAvatar } from "../../utils/profileAvatars";
 
 const PageNavigations = () => {
   const [showCreatePost, setShowCreatePost] = useState(false);
+  const [showUserInNavModal, setShowUserInNavModal] = useState(false);
   const { user, logOutFunc } = useAuth();
   const isNavActive = ({ isActive }) => ({
     backgroundColor: isActive && "#314077",
@@ -44,36 +45,47 @@ const PageNavigations = () => {
           <span className="nav_name">Create New Post</span>
         </button>
 
-        <p
-          onClick={logOutFunc}
-          style={{ cursor: "pointer" }}
-          className="nav_element"
+        <div
+          className="user_in_nav"
+          onClick={() => setShowUserInNavModal(!showUserInNavModal)}
         >
-          <i className="fa-solid fa-right-from-bracket"></i>
-          <span className="nav_name">Logout</span>
-        </p>
-      <div className="user_in_nav">
-        <div>
-          <img
-            src={user.profilePic ? user.profilePic : defaultAvatar}
-            alt="user_pic"
-            className="user_pic_in_nav"
-          />
+          <div>
+            <img
+              src={user.profilePic ? user.profilePic : defaultAvatar}
+              alt="user_pic"
+              className="user_pic_in_nav"
+            />
+          </div>
+          <div>
+            <span
+              className="nav_name"
+              style={{ color: "var(--text-color-dark)", fontWeight: "bolder" }}
+            >
+              {user.firstName} {user.lastName}
+            </span>
+            <br />
+            <span className="nav_name" style={{ color: "#71717a" }}>
+              @{user.username}
+            </span>
+          </div>
         </div>
-        <div>
-          <span className="nav_name"
-            style={{ color: "var(--text-color-dark)", fontWeight: "bolder" }}
-          >
-            {user.firstName} {user.lastName}
-          </span>
-          <br />
-          <span className="nav_name" style={{ color: "#71717a" }}>@{user.username}</span>
-        </div>
-      </div>
       </div>
       {showCreatePost && (
         <div className="new_post_modal">
           <NewPostModal setShowCreatePost={setShowCreatePost} />
+        </div>
+      )}
+      {showUserInNavModal && (
+        <div className="user_nav_modal">
+          <p
+            onClick={logOutFunc}
+            style={{ cursor: "pointer" }}
+            className="logoutbtn"
+          >
+            <i className="fa-solid fa-right-from-bracket"></i>
+            <span>Logout</span>
+          </p>
+          <p>Change Theme(coming soon)</p>
         </div>
       )}
     </div>
