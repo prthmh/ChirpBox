@@ -24,6 +24,20 @@ export const posts = [
   },
   {
     _id: uuid(),
+    content: "Dream Vacation Mount Fuji-Japan.",
+    mediaURL: "https://mcdn.wallpapersafari.com/medium/52/82/LqIjUa.jpg",
+    mediaAlt: "react",
+    likes: {
+      likeCount: 20,
+      likedBy: [],
+      dislikedBy: [],
+    },
+    username: "prxthmxsh",
+    createdAt: "2023-06-27T17:48:53+05:30",
+    updatedAt: "2023-06-27T17:48:53+05:30",
+  },
+  {
+    _id: uuid(),
     content: "Today is a good day.",
     mediaURL: "",
     mediaAlt: "",
@@ -92,6 +106,35 @@ export const posts = [
     },
     username: "jaySht",
     createdAt: "2023-02-27T18:48:53+05:30",
+    updatedAt: formatDate(),
+  },
+  {
+    _id: uuid(),
+    content: "",
+    mediaURL: "https://i.redd.it/dpiofcduwk491.jpg",
+    mediaAlt: "qoute",
+    likes: {
+      likeCount: 3,
+      likedBy: [],
+      dislikedBy: [],
+    },
+    username: "RajM",
+    createdAt: "2023-01-27T18:48:53+05:30",
+    updatedAt: formatDate(),
+  },
+  {
+    _id: uuid(),
+    content:
+      "Anyone who stops learning is old, whether at twenty or eighty. Anyone who keeps learning stays young. - Henry Ford",
+    mediaURL: "",
+    mediaAlt: "",
+    likes: {
+      likeCount: 1,
+      likedBy: [],
+      dislikedBy: [],
+    },
+    username: "jigP",
+    createdAt: "2023-01-27T18:48:53+05:30",
     updatedAt: formatDate(),
   },
 ];

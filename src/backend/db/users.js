@@ -14,7 +14,8 @@ export const users = [
     password: "prat@123",
     createdAt: formatDate(),
     updatedAt: formatDate(),
-    profilePic: "https://picsum.photos/id/474/200/200",
+    profilePic:
+      "https://i.pinimg.com/564x/e3/fc/71/e3fc715b352f6b606cc31d5329cc1737.jpg",
     avatarPic: "",
     bookmarks: [],
     bio_link: "https://prathmeshumberkar.netlify.app/",
@@ -101,6 +102,41 @@ export const users = [
     bookmarks: [],
     bannerImg:
       "https://i.pinimg.com/564x/fd/d3/91/fdd39171aac8afb88312d5d78d9e46f4.jpg",
+    followers: [
+      {
+        _id: 2,
+        firstName: "Aayush",
+        lastName: "Khatri",
+        username: "aayushK",
+        password: "ary@123",
+        createdAt: "2023-05-27T17:48:53+05:30",
+        updatedAt: "2023-05-27T17:48:53+05:30",
+        profilePic: "https://picsum.photos/id/250/200/200",
+      },
+    ],
+    following: [
+      {
+        _id: 4,
+        firstName: "Rahul",
+        lastName: "Kapoor",
+        username: "rahulK",
+        password: "rk@123",
+        createdAt: "2023-03-27T17:48:53+05:30",
+        updatedAt: "2023-03-27T17:48:53+05:30",
+        profilePic: "https://picsum.photos/id/338/200/200",
+      },
+      {
+        _id: 7,
+        firstName: "Jignesh",
+        lastName: "Patel",
+        username: "jigP",
+        password: "rk@123",
+        createdAt: "2023-03-27T17:48:53+05:30",
+        updatedAt: "2023-03-27T17:48:53+05:30",
+        profilePic:
+          "https://cdn.pixabay.com/photo/2023/06/18/00/38/beetle-8070966_1280.jpg",
+      },
+    ],
   },
   {
     _id: 3,
@@ -115,6 +151,41 @@ export const users = [
     bookmarks: [],
     bannerImg:
       "https://i.pinimg.com/originals/2e/59/a4/2e59a45889aa828e0e0da51691971655.jpg",
+    following: [
+      {
+        _id: 2,
+        firstName: "Aayush",
+        lastName: "Khatri",
+        username: "aayushK",
+        password: "ary@123",
+        createdAt: "2023-05-27T17:48:53+05:30",
+        updatedAt: "2023-05-27T17:48:53+05:30",
+        profilePic: "https://picsum.photos/id/250/200/200",
+      },
+    ],
+    followers: [
+      {
+        _id: 4,
+        firstName: "Rahul",
+        lastName: "Kapoor",
+        username: "rahulK",
+        password: "rk@123",
+        createdAt: "2023-03-27T17:48:53+05:30",
+        updatedAt: "2023-03-27T17:48:53+05:30",
+        profilePic: "https://picsum.photos/id/338/200/200",
+      },
+      {
+        _id: 7,
+        firstName: "Jignesh",
+        lastName: "Patel",
+        username: "jigP",
+        password: "rk@123",
+        createdAt: "2023-03-27T17:48:53+05:30",
+        updatedAt: "2023-03-27T17:48:53+05:30",
+        profilePic:
+          "https://cdn.pixabay.com/photo/2023/06/18/00/38/beetle-8070966_1280.jpg",
+      },
+    ],
   },
   {
     _id: 4,
@@ -129,6 +200,41 @@ export const users = [
     bookmarks: [],
     bannerImg:
       "https://i.pinimg.com/1200x/83/3d/43/833d4399648f74f30f9fed8c86edb960.jpg",
+    following: [
+      {
+        _id: 2,
+        firstName: "Aayush",
+        lastName: "Khatri",
+        username: "aayushK",
+        password: "ary@123",
+        createdAt: "2023-05-27T17:48:53+05:30",
+        updatedAt: "2023-05-27T17:48:53+05:30",
+        profilePic: "https://picsum.photos/id/250/200/200",
+      },
+    ],
+    followers: [
+      {
+        _id: 4,
+        firstName: "Jane",
+        lastName: "Smith",
+        username: "janesmith",
+        password: "rk@123",
+        createdAt: "2023-03-27T17:48:53+05:30",
+        updatedAt: "2023-03-27T17:48:53+05:30",
+        profilePic: "https://picsum.photos/id/338/200/200",
+      },
+      {
+        _id: 7,
+        firstName: "Jignesh",
+        lastName: "Patel",
+        username: "jigP",
+        password: "rk@123",
+        createdAt: "2023-03-27T17:48:53+05:30",
+        updatedAt: "2023-03-27T17:48:53+05:30",
+        profilePic:
+          "https://cdn.pixabay.com/photo/2023/06/18/00/38/beetle-8070966_1280.jpg",
+      },
+    ],
   },
   {
     _id: 5,
@@ -147,17 +253,83 @@ export const users = [
   {
     _id: 6,
     firstName: "Raj",
-    lastName: "Malhotra",
+    lastName: "Agnihotri",
     username: "RajM",
     password: "rk@123",
     createdAt: "2023-03-27T17:48:53+05:30",
     updatedAt: "2023-03-27T17:48:53+05:30",
     profilePic:
-      "https://akm-img-a-in.tosshub.com/indiatoday/images/story/202010/srk-ddlj-raj_1200x768.png?size=690:388",
+      "https://images.pexels.com/photos/7532428/pexels-photo-7532428.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
     avatarPic: "",
     bookmarks: [],
     bannerImg:
       "https://i.pinimg.com/originals/2e/59/a4/2e59a45889aa828e0e0da51691971655.jpg",
+      followers: [
+      {
+        _id: 2,
+        firstName: "Aayush",
+        lastName: "Khatri",
+        username: "aayushK",
+        password: "ary@123",
+        createdAt: "2023-05-27T17:48:53+05:30",
+        updatedAt: "2023-05-27T17:48:53+05:30",
+        profilePic: "https://picsum.photos/id/250/200/200",
+      },
+      {
+        _id: 4,
+        firstName: "Rahul",
+        lastName: "Kapoor",
+        username: "rahulK",
+        password: "rk@123",
+        createdAt: "2023-03-27T17:48:53+05:30",
+        updatedAt: "2023-03-27T17:48:53+05:30",
+        profilePic: "https://picsum.photos/id/338/200/200",
+      },
+      {
+        _id: 7,
+        firstName: "Jignesh",
+        lastName: "Patel",
+        username: "jigP",
+        password: "rk@123",
+        createdAt: "2023-03-27T17:48:53+05:30",
+        updatedAt: "2023-03-27T17:48:53+05:30",
+        profilePic:
+          "https://cdn.pixabay.com/photo/2023/06/18/00/38/beetle-8070966_1280.jpg",
+      },
+      {
+        _id: 6,
+        firstName: "Raj",
+        lastName: "Malhotra",
+        username: "RajM",
+        password: "rk@123",
+        createdAt: "2023-03-27T17:48:53+05:30",
+        updatedAt: "2023-03-27T17:48:53+05:30",
+        profilePic:
+          "https://akm-img-a-in.tosshub.com/indiatoday/images/story/202010/srk-ddlj-raj_1200x768.png?size=690:388",
+      },
+    ],
+    following: [
+      {
+        _id: 3,
+        firstName: "Jane",
+        lastName: "Smith",
+        username: "janesmith",
+        password: "jane@123",
+        createdAt: "2023-04-27T17:48:53+05:30",
+        updatedAt: "2023-04-27T17:48:53+05:30",
+        profilePic: "https://picsum.photos/id/331/200/200",
+      },
+      {
+        _id: 4,
+        firstName: "Rahul",
+        lastName: "Kapoor",
+        username: "rahulK",
+        password: "rk@123",
+        createdAt: "2023-03-27T17:48:53+05:30",
+        updatedAt: "2023-03-27T17:48:53+05:30",
+        profilePic: "https://picsum.photos/id/338/200/200",
+      },
+    ],
   },
   {
     _id: 7,
@@ -173,5 +345,40 @@ export const users = [
     bookmarks: [],
     bannerImg:
       "https://i.pinimg.com/originals/2e/59/a4/2e59a45889aa828e0e0da51691971655.jpg",
+      following: [
+        {
+          _id: 2,
+          firstName: "Aayush",
+          lastName: "Khatri",
+          username: "aayushK",
+          password: "ary@123",
+          createdAt: "2023-05-27T17:48:53+05:30",
+          updatedAt: "2023-05-27T17:48:53+05:30",
+          profilePic: "https://picsum.photos/id/250/200/200",
+        },
+      ],
+      followers: [
+        {
+          _id: 4,
+          firstName: "Rahul",
+          lastName: "Kapoor",
+          username: "rahulK",
+          password: "rk@123",
+          createdAt: "2023-03-27T17:48:53+05:30",
+          updatedAt: "2023-03-27T17:48:53+05:30",
+          profilePic: "https://picsum.photos/id/338/200/200",
+        },
+        {
+          _id: 7,
+          firstName: "Jignesh",
+          lastName: "Patel",
+          username: "jigP",
+          password: "rk@123",
+          createdAt: "2023-03-27T17:48:53+05:30",
+          updatedAt: "2023-03-27T17:48:53+05:30",
+          profilePic:
+            "https://cdn.pixabay.com/photo/2023/06/18/00/38/beetle-8070966_1280.jpg",
+        },
+      ],
   },
 ];
