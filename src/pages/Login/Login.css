@@ -36,6 +36,7 @@
   left: 16rem;
   top: 2rem;
   color: var(--text-color-dark);
+  cursor: pointer;
 }
 
 .login_input {
