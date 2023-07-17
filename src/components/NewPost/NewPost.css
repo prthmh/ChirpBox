@@ -90,8 +90,8 @@
   height: 15rem;
   object-fit: contain;
   display: flex;
-  margin: auto;
-  border-radius: 0.8rem;
+  /* margin: auto;
+  border-radius: 0.8rem; */
 }
 
 .new_post_media {

@@ -46,4 +46,12 @@
   inset: 0;
   z-index: 999;
   background-color: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(4px);
+}
+@media screen and (max-width: 400px) {
+  .call_to_action_btns {
+    font-size: 0.9rem;
+    padding-left: 0;
+    gap: 5rem;
+  }
 }

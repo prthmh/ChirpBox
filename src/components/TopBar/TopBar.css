@@ -63,8 +63,28 @@
   .top_bar {
     justify-content: space-between;
     margin: 0;
+    gap: 0.5rem;
   }
   .searched_users {
     left: -5.5rem;
+  }
+}
+
+@media screen and (max-width: 385px) {
+  .site_logo {
+    width: 1.6rem;
+    height: 1.6rem;
+  }
+  .site_name {
+    font-size: 1.2rem;
+  }
+  .search_icon {
+    font-size: 0.8rem;
+    margin-right: 0.2rem;
+    margin-left: 0.1rem;
+  }
+  .search_input {
+    width: 60%;
+    height: 1.2rem;
   }
 }
