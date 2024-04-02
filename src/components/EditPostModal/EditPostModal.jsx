@@ -24,7 +24,7 @@ const EditPostModal = ({ setShowEditModal, post }) => {
     const toastId = toast.loading("Saving Post...", { autoClose: false });
     if (editPostMedia) {
       const res = await uploadMedia(editPostMedia);
-      console.log("edit img res", res);
+      
       editPostFunc(post._id, toastId, {
         content: input?.content,
         mediaURL: res.url,
@@ -33,7 +33,7 @@ const EditPostModal = ({ setShowEditModal, post }) => {
     } else {
       editPostFunc(post._id, toastId, input);
     }
-    setShowEditModal(false);
+    setShowEditModal(false); 
   };
 
   return (

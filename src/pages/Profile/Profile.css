@@ -12,9 +12,6 @@
   width: 7rem;
   height: 7rem;
   object-fit: cover;
-  /* position: absolute;
-  right: 39rem;
-  top: -4rem; */
   border: 0.3rem solid var(--main-bg-color);
 }
 .profile_header {
@@ -25,7 +22,7 @@
   position: absolute;
   left: 0;
   right: 0;
-  top: -10vh;
+  top: -72px;
 }
 .header_info {
   padding: 1rem;

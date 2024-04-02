@@ -118,7 +118,7 @@ const NewPost = ({ setShowCreatePost }) => {
                         position: "top-right",
                       })
                     : setMedia(e.target.files[0])
-                }
+                } 
                 className="upload_image"
               />
               <i className="fa-solid fa-image btn"></i>

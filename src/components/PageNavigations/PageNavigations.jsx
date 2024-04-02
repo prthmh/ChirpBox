@@ -71,7 +71,7 @@ const PageNavigations = () => {
         </div>
       </div>
       {showCreatePost && (
-        <div className="new_post_modal">
+        <div className="new_post_modal"> 
           <NewPostModal setShowCreatePost={setShowCreatePost} />
         </div>
       )}

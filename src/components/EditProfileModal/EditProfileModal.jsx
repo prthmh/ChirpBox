@@ -6,6 +6,7 @@ import AvatarModal from "../AvatarModal/AvatarModal";
 import { useAuth } from "../../context/AuthContext";
 import { defaultAvatar, defaultBannerImg } from "../../utils/profileAvatars";
 import { toast } from "react-toastify";
+import { uploadMedia } from "../../utils/uploadMedia";
 
 const EditProfileModal = ({ setShowProfileEditModal, editUser }) => {
   const { user } = useAuth();
@@ -35,6 +36,16 @@ const EditProfileModal = ({ setShowProfileEditModal, editUser }) => {
       bannerImg: selectedBannerPic ? selectedBannerPic : editUser.bannerImg,
     });
     setShowProfileEditModal(false);
+  };
+
+  const uploadEditedUserMedia = async (media, type) => {
+    if (type === "profilePic") {
+      const res = await uploadMedia(media);
+      setProfileImg(res.url);
+    } else if (type === "bannerImg") {
+      const res = await uploadMedia(media);
+      setSelectedBannerPic(res.url);
+    }
   };
 
   return (
@@ -88,6 +99,7 @@ const EditProfileModal = ({ setShowProfileEditModal, editUser }) => {
                   });
                 } else {
                   setProfileImg(URL.createObjectURL(e.target.files[0]));
+                  uploadEditedUserMedia(e.target.files[0], "profilePic");
                 }
               }}
             />
@@ -106,6 +118,7 @@ const EditProfileModal = ({ setShowProfileEditModal, editUser }) => {
                   });
                 } else {
                   setSelectedBannerPic(URL.createObjectURL(e.target.files[0]));
+                  uploadEditedUserMedia(e.target.files[0], "bannerImg");
                 }
               }}
             />

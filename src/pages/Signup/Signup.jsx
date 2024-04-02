@@ -9,7 +9,6 @@ const Signup = () => {
   const [signUpData, setSignUpData] = useState({
     firstName: "",
     lastName: "",
-    fullname: "",
     username: "",
     email: "",
     password: "",
@@ -117,7 +116,7 @@ const Signup = () => {
                 }))
               }
             >
-              {showPassword ? (
+              {showPassword.pwd ? (
                 <i className="fa-solid fa-eye-slash"></i>
               ) : (
                 <i className="fa-solid fa-eye"></i>
@@ -143,7 +142,7 @@ const Signup = () => {
                 }))
               }
             >
-              {showPassword ? (
+              {showPassword.confirmPwd ? (
                 <i className="fa-solid fa-eye-slash"></i>
               ) : (
                 <i className="fa-solid fa-eye"></i>

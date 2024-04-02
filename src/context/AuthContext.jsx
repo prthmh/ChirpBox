@@ -3,7 +3,7 @@ import { createContext, useContext } from "react";
 import { loginService, signUpService } from "../services/AuthServices";
 import { useLocation, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
-
+ 
 export const AuthContext = createContext();
 export const AuthProvider = ({ children }) => {
   const tokenInLocalStorage = JSON.parse(localStorage.getItem("loginToken"));
@@ -47,11 +47,12 @@ export const AuthProvider = ({ children }) => {
     firstName,
     lastName,
     username,
+    email,
     password,
   }) => {
     setIsLoading(true);
     try {
-      const res = await signUpService(firstName, lastName, username, password);
+      const res = await signUpService(firstName, lastName, username, email, password);
       const {
         status,
         data: { createdUser, encodedToken },

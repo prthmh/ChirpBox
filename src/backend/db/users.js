@@ -336,7 +336,7 @@ export const users = [
     firstName: "Jignesh",
     lastName: "Patel",
     username: "jigP",
-    password: "rk@123",
+    password: "jp@123",
     createdAt: "2023-03-27T17:48:53+05:30",
     updatedAt: "2023-03-27T17:48:53+05:30",
     profilePic:

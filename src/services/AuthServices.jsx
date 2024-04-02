@@ -8,11 +8,12 @@ export const loginService = async (username, password) => {
     console.error("Error in loginService function", error);
   }
 };
-
+ 
 export const signUpService = async (
   firstName,
   lastName,
   username,
+  email,
   password
 ) => {
   try {
@@ -20,6 +21,7 @@ export const signUpService = async (
       firstName,
       lastName,
       username,
+      email,
       password,
     });
     return res;

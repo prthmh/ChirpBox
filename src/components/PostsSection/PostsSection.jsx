@@ -9,7 +9,7 @@ import { getDate } from "../../utils/getDate";
 import { useNavigate } from "react-router-dom";
 
 const PostsSection = ({ post }) => {
-  const { token, user } = useAuth();
+  const { token, user } = useAuth(); 
   const {
     dataState: { allUsers, bookmarks },
     addToBookMarksFunc,
@@ -114,7 +114,7 @@ const PostsSection = ({ post }) => {
         <div className="edit_modal">
           <EditPostModal setShowEditModal={setShowEditModal} post={post} />
         </div>
-      )}
+      )} 
     </div>
   );
 };
